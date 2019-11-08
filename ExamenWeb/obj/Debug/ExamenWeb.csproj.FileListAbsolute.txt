@@ -658,3 +658,5 @@ C:\wamp64\www\ExamenType\ExamenWeb\bin\fr\Microsoft.Owin.Security.Twitter.resour
 C:\wamp64\www\ExamenType\ExamenWeb\bin\fr\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
 C:\wamp64\www\ExamenType\ExamenWeb\obj\Debug\ExamenWeb.dll
 C:\wamp64\www\ExamenType\ExamenWeb\obj\Debug\ExamenWeb.pdb
+C:\wamp64\www\ExamenType\ExamenWeb\obj\Debug\ExamenWeb.Migrations.user1Migration.resources
+C:\wamp64\www\ExamenType\ExamenWeb\obj\Debug\ExamenWeb.csproj.GenerateResource.Cache
