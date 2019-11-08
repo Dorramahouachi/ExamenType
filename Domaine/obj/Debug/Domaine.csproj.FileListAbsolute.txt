@@ -58,3 +58,15 @@ D:\4ERP-BI1\PIDEV\ExamenType\Domaine\obj\Debug\Domaine.csproj.CoreCompileInputs.
 D:\4ERP-BI1\PIDEV\ExamenType\Domaine\obj\Debug\Domaine.csproj.CopyComplete
 D:\4ERP-BI1\PIDEV\ExamenType\Domaine\obj\Debug\Domaine.dll
 D:\4ERP-BI1\PIDEV\ExamenType\Domaine\obj\Debug\Domaine.pdb
+C:\wamp64\www\ExamenType\Domaine\bin\Debug\Domaine.dll.config
+C:\wamp64\www\ExamenType\Domaine\bin\Debug\Domaine.dll
+C:\wamp64\www\ExamenType\Domaine\bin\Debug\Domaine.pdb
+C:\wamp64\www\ExamenType\Domaine\bin\Debug\EntityFramework.dll
+C:\wamp64\www\ExamenType\Domaine\bin\Debug\EntityFramework.SqlServer.dll
+C:\wamp64\www\ExamenType\Domaine\bin\Debug\EntityFramework.xml
+C:\wamp64\www\ExamenType\Domaine\bin\Debug\EntityFramework.SqlServer.xml
+C:\wamp64\www\ExamenType\Domaine\bin\Debug\fr\EntityFramework.resources.dll
+C:\wamp64\www\ExamenType\Domaine\bin\Debug\fr\EntityFramework.SqlServer.resources.dll
+C:\wamp64\www\ExamenType\Domaine\obj\Debug\Domaine.csprojResolveAssemblyReference.cache
+C:\wamp64\www\ExamenType\Domaine\obj\Debug\Domaine.dll
+C:\wamp64\www\ExamenType\Domaine\obj\Debug\Domaine.pdb

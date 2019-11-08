@@ -62,6 +62,7 @@
       <DependentUpon>201911041830182_v1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="MyConfigurations\UserConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -75,7 +76,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="MyConfigurations\" />
     <Folder Include="MyConventions\" />
   </ItemGroup>
   <ItemGroup>

@@ -11,10 +11,20 @@ namespace Domaine
     {
         [Key]
         public int UserId { get; set; }
-        [StringLength(15, ErrorMessage = "Ne doit pas depassé 15 caractéres!")]
-        public String login { get; set; }
-        [StringLength(25, ErrorMessage = "Ne doit pas depassé 25 caractéres!")]
-        [MinLength(8,ErrorMessage = "Au minimum 8 caractéres!")]
-        public String password { get; set; }
+
+        public string Username { get; set; }
+
+        public string Email { get; set; }
+
+        public string Password { get; set; }
+
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+
+        public bool IsActive { get; set; }
+        public DateTime CreateDate { get; set; }
+
+        public virtual ICollection<Role> Roles { get; set; }
+
     }
 }

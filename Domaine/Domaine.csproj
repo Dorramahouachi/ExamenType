@@ -72,6 +72,7 @@
     <Compile Include="ReactPost.cs" />
     <Compile Include="Reponse.cs" />
     <Compile Include="RHmanager.cs" />
+    <Compile Include="Role.cs" />
     <Compile Include="subscribe.cs" />
     <Compile Include="TeamWork.cs" />
     <Compile Include="User.cs" />

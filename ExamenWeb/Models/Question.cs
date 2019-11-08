@@ -12,7 +12,7 @@ namespace Models
     {
         public int QuestionId { get; set; }
         public String Questions { get; set; }
-        
+
         //public int? EntretienEnLigneId { get; set; }
         public virtual EntretienEnLigne EntretienEnLigne { get; set; }
         public ICollection<Choix> ListeChoix { get; set; }

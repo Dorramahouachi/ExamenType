@@ -1,0 +1,3 @@
+C:\wamp64\www\ExamenType\ExamenWeb\obj\Debug\Web.csprojResolveAssemblyReference.cache
+C:\wamp64\www\ExamenType\ExamenWeb\obj\Debug\ExamenWeb.dll
+C:\wamp64\www\ExamenType\ExamenWeb\obj\Debug\ExamenWeb.pdb

@@ -1,30 +1,55 @@
-﻿using System;
+﻿using Data;
+using Domaine;
+using Service;
+using Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
-using System.Web.Mvc;
 
-namespace ExamenWeb.Controllers
+using System.Web.Mvc;
+using ExamenWeb.Models;
+using ExamenWeb.DAL;
+using ExamenWeb.Controllers;
+
+namespace Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
+
+        public static string msg;
         public ActionResult Index()
         {
-            return View();
-        }
+            if (msg != null)
+            {
+                if (msg.Equals("login-e"))
+                {
+                    ViewBag.error = "Incorrect username and / or password";
+                }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
+                if (msg.Equals("regiter-s"))
+                {
+                    ViewBag.success = "Login now to active your account";
+                }
+                if (msg.Equals("res-e"))
+                {
+                    ViewBag.error = "login please";
+                }
+                if (msg.Equals("place-e"))
+                {
+                    ViewBag.error = "pas de place sorry";
+                }
+                msg = null;
+            }
             return View();
         }
     }
-}
+    }
+        /*    public ActionResult StatFilm()
+            {
+
+                return View("Statestique/StatFilm");
+            }
+            */     

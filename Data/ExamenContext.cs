@@ -13,6 +13,7 @@ namespace Data
         public ExamenContext() :base("Name=alias")
         {
         }
+        public DbSet<Role> Roles { get; set; }
         public DbSet<Candidat> Candidat { get; set; }
         public DbSet<Candidature> Candidature { get; set; }
         public DbSet<Contacts> Contacts { get; set; }
