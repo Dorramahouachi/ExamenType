@@ -32,12 +32,13 @@ namespace Data
         public DbSet<ReactPost> ReactPost { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<Answer> Answers { get; set; }
+        
 
-      /*  protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Conventions.Remove<IncludeMetadataConvention>();
-            modelBuilder.Configurations.Add(new QuestionConfiguration());
-            modelBuilder.Configurations.Add(new AnswerConfiguration());
-        }*/
+        /*  protected override void OnModelCreating(DbModelBuilder modelBuilder)
+          {
+              modelBuilder.Conventions.Remove<IncludeMetadataConvention>();
+              modelBuilder.Configurations.Add(new QuestionConfiguration());
+              modelBuilder.Configurations.Add(new AnswerConfiguration());
+          }*/
     }
 }

@@ -400,6 +400,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CalendriersController.cs" />
+    <Compile Include="Controllers\CandidaturesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
@@ -566,6 +568,13 @@
     <Content Include="Views\RHAnswer\Create.cshtml" />
     <Content Include="Views\RHAnswer\Edit.cshtml" />
     <Content Include="Views\RHAnswer\Delete.cshtml" />
+    <Content Include="Views\Candidatures\Create.cshtml" />
+    <Content Include="Views\Candidatures\Details.cshtml" />
+    <Content Include="Views\Candidatures\Edit.cshtml" />
+    <Content Include="Views\Candidatures\Index.cshtml" />
+    <Content Include="Views\Candidatures\CandidatCandidatures.cshtml" />
+    <Content Include="Views\Calendriers\Index.cshtml" />
+    <Content Include="Views\Calendriers\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

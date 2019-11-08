@@ -3,7 +3,7 @@ namespace Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class v : DbMigration
+    public partial class v1 : DbMigration
     {
         public override void Up()
         {
@@ -25,7 +25,7 @@ namespace Data.Migrations
                 c => new
                     {
                         QuestionID = c.Int(nullable: false, identity: true),
-                        Content = c.String(unicode: false, storeType: "text"),
+                        Content = c.String(),
                     })
                 .PrimaryKey(t => t.QuestionID);
             
@@ -68,7 +68,7 @@ namespace Data.Migrations
                         candidatureId = c.Int(nullable: false, identity: true),
                         UserId = c.Int(),
                         candidatureDate = c.DateTime(nullable: false),
-                        etat = c.String(),
+                        etat = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.candidatureId)
                 .ForeignKey("dbo.Users", t => t.UserId)

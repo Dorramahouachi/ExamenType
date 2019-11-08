@@ -1,0 +1,43 @@
+﻿@model Domaine.Candidature
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutCustom.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Candidature</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Users.login)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Users.login)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.candidatureDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.candidatureDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.etat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.etat)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.candidatureId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

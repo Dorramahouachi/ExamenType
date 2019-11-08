@@ -72,11 +72,9 @@ D:\4ERP-BI1\PIDEV\ExamenType\Data\bin\Debug\EntityFramework.SqlServer.xml
 D:\4ERP-BI1\PIDEV\ExamenType\Data\bin\Debug\fr\EntityFramework.resources.dll
 D:\4ERP-BI1\PIDEV\ExamenType\Data\bin\Debug\fr\EntityFramework.SqlServer.resources.dll
 D:\4ERP-BI1\PIDEV\ExamenType\Data\obj\Debug\Data.csprojAssemblyReference.cache
-D:\4ERP-BI1\PIDEV\ExamenType\Data\obj\Debug\Data.Migrations.v.resources
 D:\4ERP-BI1\PIDEV\ExamenType\Data\obj\Debug\Data.Migrations.v1.resources
 D:\4ERP-BI1\PIDEV\ExamenType\Data\obj\Debug\Data.Migrations.v2.resources
 D:\4ERP-BI1\PIDEV\ExamenType\Data\obj\Debug\Data.Migrations.v3.resources
-D:\4ERP-BI1\PIDEV\ExamenType\Data\obj\Debug\Data.Migrations.v4.resources
 D:\4ERP-BI1\PIDEV\ExamenType\Data\obj\Debug\Data.csproj.GenerateResource.cache
 D:\4ERP-BI1\PIDEV\ExamenType\Data\obj\Debug\Data.csproj.CoreCompileInputs.cache
 D:\4ERP-BI1\PIDEV\ExamenType\Data\obj\Debug\Data.csproj.CopyComplete

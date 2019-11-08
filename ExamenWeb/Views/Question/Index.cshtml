@@ -1,39 +1,45 @@
 ﻿@{
     Layout = "~/Views/Shared/_LayoutCustom.cshtml";
 }
-
-
 <!DOCTYPE html>
-
 <html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
 <body>
-    <h3>Quiz</h3>
-    <form asp-controller="Question" asp-action="Submit">
+
+    <div class="container">
+        <br />
+        <br />
+        <h3>Quiz</h3>
+        <hr />
+
+     <form  action="@Url.Action("GetResults","Question")" method="post" >
         <ol>
             @foreach (var question in ViewBag.Questions)
             {
                 <li>
-                    @question.Content
-                    <input type="hidden" name="questionId" value="@question.QuestionID" />
-                    <ol>
+                    <b style="color:black"> @question.Content</b>
+                   
+                    <ul>
                         @foreach (var answer in question.Answers)
                         {
                             <li>
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
                                 <input type="radio" name="question_@answer.QuestionID" value="@answer.AnswerID" />
                                 @answer.Content
+
                             </li>
                         }
-                    </ol>
+                    </ul>
                 </li>
             }
 
         </ol>
-        <input type="submit" value="Submit" />
-    </form>
+        <br />
+        <li><input class="btn btn-default" type="submit" value="Create" /></li>
+        <br />
+        </form>
+    </div>
 </body>
-
+<!--style="color:aqua" -->
 </html>

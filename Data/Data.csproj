@@ -11,6 +11,8 @@
     <AssemblyName>Data</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,11 +34,9 @@
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -57,25 +57,17 @@
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201911071005031_v.cs" />
-    <Compile Include="Migrations\201911071005031_v.Designer.cs">
-      <DependentUpon>201911071005031_v.cs</DependentUpon>
+    <Compile Include="Migrations\201911081612463_v1.cs" />
+    <Compile Include="Migrations\201911081612463_v1.Designer.cs">
+      <DependentUpon>201911081612463_v1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201911071027265_v1.cs" />
-    <Compile Include="Migrations\201911071027265_v1.Designer.cs">
-      <DependentUpon>201911071027265_v1.cs</DependentUpon>
+    <Compile Include="Migrations\201911081823083_v2.cs" />
+    <Compile Include="Migrations\201911081823083_v2.Designer.cs">
+      <DependentUpon>201911081823083_v2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201911071035523_v2.cs" />
-    <Compile Include="Migrations\201911071035523_v2.Designer.cs">
-      <DependentUpon>201911071035523_v2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911071548297_v3.cs" />
-    <Compile Include="Migrations\201911071548297_v3.Designer.cs">
-      <DependentUpon>201911071548297_v3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911071558292_v4.cs" />
-    <Compile Include="Migrations\201911071558292_v4.Designer.cs">
-      <DependentUpon>201911071558292_v4.cs</DependentUpon>
+    <Compile Include="Migrations\201911082007288_v3.cs" />
+    <Compile Include="Migrations\201911082007288_v3.Designer.cs">
+      <DependentUpon>201911082007288_v3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyConfigurations\AnswerConfiguration.cs" />
@@ -96,20 +88,14 @@
     <Folder Include="MyConventions\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201911071005031_v.resx">
-      <DependentUpon>201911071005031_v.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911081612463_v1.resx">
+      <DependentUpon>201911081612463_v1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911071027265_v1.resx">
-      <DependentUpon>201911071027265_v1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911081823083_v2.resx">
+      <DependentUpon>201911081823083_v2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911071035523_v2.resx">
-      <DependentUpon>201911071035523_v2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911071548297_v3.resx">
-      <DependentUpon>201911071548297_v3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911071558292_v4.resx">
-      <DependentUpon>201911071558292_v4.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911082007288_v3.resx">
+      <DependentUpon>201911082007288_v3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

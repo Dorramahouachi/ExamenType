@@ -10,15 +10,24 @@ namespace Domaine
 {
     public class Candidature
     {
+       
         [Key]
         public int candidatureId { get; set; }
         public virtual User Users { get; set; }
         public int? UserId { get; set; }
         //[ForeignKey("Offer")]
         //private int offerId { get; set; }
-        public DateTime candidatureDate { get; set; }
         [DataType(DataType.Date)]
-        public String etat { get; set; }
-        
+        public DateTime candidatureDate { get; set; }
+       
+        public enum etatCandidature
+        {
+            rejected = 1,
+            accepted = 2,
+            processing = 3,
+            Quizz=4
+           
+        }
+        public etatCandidature etat { get; set; }
     }
 }

@@ -15,24 +15,27 @@ namespace ExamenWeb.Controllers
         public ActionResult Index()
         {
             ViewBag.Questions = DbContext.Questions.ToList();
+            
             return View();
         }
 
         [HttpPost]
-
-        public ActionResult Submit(IFormCollection formCollection)
+        public ActionResult GetResults(System.Web.Mvc.FormCollection formCollection)
         {
+          
             int score = 0;
-            string[] questionIds = formCollection["questionId"];
+           
 
-            foreach (var questionId in questionIds)
+            foreach (string questionId in formCollection.Keys)
             {
-                int answerIdCorrect = DbContext.Questions.Find(int.Parse
-                    (questionId)).Answers.Where(a => a.Correct == true).FirstOrDefault().AnswerID;
+                bool? iscorrect = false;
 
 
-                if (answerIdCorrect == int.Parse(formCollection["question_" +
-                    questionId]))
+                 iscorrect = DbContext.Answers.Find(int.Parse
+                    (formCollection[questionId])).Correct;
+
+
+                if (iscorrect.Value)
                 {
                     score++;
                 }

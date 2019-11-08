@@ -38,7 +38,7 @@ namespace ExamenWeb.Controllers
             {
                 db.Answers.Add(ans);
                 db.SaveChanges();
-                return RedirectToAction("IndexC");
+                return RedirectToAction("Index");
             }
 
             return View(ans);

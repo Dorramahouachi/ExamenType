@@ -11,10 +11,15 @@ namespace Domaine
     {
         [Key]
         public int CalendrierId { get; set; }
-        public String disponibilite { get; set; }
-        [DataType(DataType.Date)]
-        public DateTime date { get; set; }
-
-        public float heure { get; set; }
+        public String Subject { get; set; }
+        public String Description { get; set; }
+        [Required]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd HH:mm:ss}")]
+        public DateTime Start { get; set; }
+        [Required]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd HH:mm:ss}")]
+        public DateTime End { get; set; }
+        public String ThemeColor { get; set; }
+        public int IsFullDay { get; set; }
     }
 }
