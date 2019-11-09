@@ -34,9 +34,12 @@ namespace Data.Migrations
                 c => new
                     {
                         CalendrierId = c.Int(nullable: false, identity: true),
-                        disponibilite = c.String(),
-                        date = c.DateTime(nullable: false),
-                        heure = c.Single(nullable: false),
+                        Subject = c.String(),
+                        Description = c.String(),
+                        Start = c.DateTime(nullable: false),
+                        End = c.DateTime(nullable: false),
+                        ThemeColor = c.String(),
+                        IsFullDay = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.CalendrierId);
             

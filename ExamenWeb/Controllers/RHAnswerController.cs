@@ -32,8 +32,9 @@ namespace ExamenWeb.Controllers
 
         // POST: Comment/Create
         [HttpPost]
-        public ActionResult Create([Bind(Include = "AnswerID,Content,QuestionID")] Answer ans)
+        public ActionResult Create([Bind(Include = "AnswerID,Content,Correct,Question")] Answer ans)
         {
+            
             if (ModelState.IsValid)
             {
                 db.Answers.Add(ans);
@@ -44,7 +45,7 @@ namespace ExamenWeb.Controllers
             return View(ans);
         }
 
-
+       
 
         // GET: Comment/Edit/5
         public ActionResult Edit(int? id)
@@ -66,7 +67,7 @@ namespace ExamenWeb.Controllers
         // POST: Comment/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AnswerID,Content,QuestionID")] Answer answer)
+        public ActionResult Edit([Bind(Include = "AnswerID,Content,Correct,QuestionID")] Answer answer)
         {
             if (ModelState.IsValid)
             {

@@ -134,6 +134,7 @@ namespace ExamenWeb.Controllers
             /*  Candidature candidature = db.Candidature.Find(id);
               candidature.etat = Candidature.etatCandidature.accepted;
               db.SaveChanges();*/
+
             Candidature candidature = db.Candidature.Find(id);
             if(candidature.etat == Candidature.etatCandidature.Quizz)
             {

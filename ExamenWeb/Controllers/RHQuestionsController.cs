@@ -60,6 +60,37 @@ namespace ExamenWeb.Controllers
             return View(question);
         }
 
+      
+        public ActionResult CreateAnswer(int? id, [Bind(Include = "AnswerID,Content,Correct")] Answer ans)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Question question = db.Questions.Find(id);
+            if (question == null)
+            {
+                return HttpNotFound();
+            }
+            if (ModelState.IsValid)
+            { ans.QuestionID = id;
+                db.Answers.Add(ans);
+                db.SaveChanges();
+                // return RedirectToAction("Index");
+            }
+            return View(ans);
+          
+            /* if (ModelState.IsValid)
+                   {
+                       db.Questions.Find(quesId);
+                       db.Answers.Add(ans);
+                       db.SaveChanges();
+                       return RedirectToAction("IndexAnswer");
+                   }
+
+                   return View(ans);*/
+        }
+
         // GET: RHQuestions/Edit/5
         public ActionResult Edit(int? id)
         {

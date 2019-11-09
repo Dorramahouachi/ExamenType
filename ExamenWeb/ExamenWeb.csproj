@@ -575,6 +575,7 @@
     <Content Include="Views\Candidatures\CandidatCandidatures.cshtml" />
     <Content Include="Views\Calendriers\Index.cshtml" />
     <Content Include="Views\Calendriers\Create.cshtml" />
+    <Content Include="Views\RHQuestions\CreateAnswer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
