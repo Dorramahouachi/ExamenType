@@ -1,24 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace Domaine
+namespace ExamenWeb.Models
 {
-    public class Contacts
+    public class ContactModels
     {
-        [Key]
         public int ContactId { get; set; }
-        public virtual User Users { get; set; }
+        public virtual UserModels Users { get; set; }
         public int? UserId { get; set; }
         public String contactId1 { get; set; }
+        public DateTime contactDate { get; set; }
         public String Name { get; set; }
         public String lastName { get; set; }
         public String actualPost { get; set; }
-        public DateTime contactDate { get; set; }
         public String pic { get; set; }
+
     }
 }

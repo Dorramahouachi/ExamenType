@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 
 namespace Services
 {
-    public interface IServiceCandidat:IService<Candidat>
+    public interface IServiceContacts : IService<Contacts>
     {
-        
     }
 }

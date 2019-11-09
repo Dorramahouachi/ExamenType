@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domaine;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -241,5 +242,6 @@ namespace ExamenWeb.Models
         public String Country { get; set; }
         public long? phoneContact { get; set; }
         public String picture { get; set; }
+        public IEnumerable<Contacts> Contacts { get; set; }
     }
 }
