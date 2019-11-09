@@ -4,6 +4,7 @@
     ViewBag.Title = "Index";
 }
 <script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
 <h2>Index</h2>
 <div class="container">
    
@@ -18,7 +19,7 @@
                 <td>
 
 
-                    @Html.DisplayFor(modelItem => pos.Contenu)
+                   @Html.Raw(pos.Contenu)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => pos.DatePost)
@@ -49,7 +50,7 @@
 
 
             <label>
-                @Html.DisplayFor(modelItem => comment.Contenu)
+              @Html.Raw(comment.Contenu)
             </label>
                 <label>
                     @Html.DisplayFor(modelItem => comment.DateComment)
@@ -59,11 +60,22 @@
                 {
 
                     @Html.ActionLink("Edit", "Edit", new { id = comment.CommentId })
-                    @Html.ActionLink("Delete", "Delete", new { id = comment.CommentId })
 
-                }
+                //@Html.ActionLink("Delete", "Delete", new { id = comment.CommentId })
 
+            }
+            <a data-toggle="modal" data-id="@comment.CommentId" title="Add this item" href="#addBookDialog">delete</a>
 
+            <div class="modal hide" id="addBookDialog" data-id="@comment.CommentId">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal">×</button>
+                    <h3 style="color:black"><b>close</b></h3>
+                </div>
+                <div class="modal-body">
+                    <h1 style="color:black"><b>Voulez vous supprimez ce post ?</b></h1>
+                    <input type="submit" name="bookId" id="bookId" class="bookId" value="@comment.CommentId" />
+                </div>
+            </div>
                 <label num="@comment.CommentId" value="hi" id="hi" name="hi" class="like">ouii</label>
 
                  <input id="@comment.CommentId" name="butli" type="submit" value="Like" class="like" />
@@ -75,6 +87,9 @@
                         @Html.HiddenFor(model => model.CommentId)
                         @Html.HiddenFor(model => model.UserId)
             <br />
+
+
+           
         }
 
 
@@ -93,7 +108,7 @@
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.Contenu, htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-10">
-                                        @Html.EditorFor(model => model.Contenu, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.TextAreaFor(model => model.Contenu, new { @class = "ckeditor"  })
                                         @Html.ValidationMessageFor(model => model.Contenu, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -136,6 +151,30 @@
 
 
 <script>
+
+    $(document).on("click", ".open-AddBookDialog", function () {
+        var myBookId = $(this).data('id');
+        var myval = $(this).attr('value');
+        $(".modal-body #bookId").val('supprimer');
+        $(".bookId").click(function () {
+
+
+            $.ajax({
+                url: '/Multiple/DeleteC',
+                type: "Post",
+                data: { PostId: myBookId },
+                success: function (response) {
+                    location.reload(true)
+                }
+
+
+            })
+
+        });
+     
+
+
+    });
     $(document).ready(function () {
 
 

@@ -31,12 +31,14 @@ namespace ExamenWeb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Post post = db.Post.Find(id);
+          
             if (post == null)
             {
                 return HttpNotFound();
             }
-            return View(post);
+            return PartialView(post);
         }
 
         // GET: Post/Create
@@ -47,6 +49,7 @@ namespace ExamenWeb.Controllers
 
         // POST: Post/Create
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Create([Bind(Include = "PostId,contenu,datePost,vue,UserId")] Post post)
         {
             if (ModelState.IsValid)
@@ -101,15 +104,15 @@ namespace ExamenWeb.Controllers
             {
                 return HttpNotFound();
             }
-            return View(post);
+            return PartialView(post);
         }
 
         // POST: Post/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
+        [HttpPost]
+      
+        public ActionResult DeleteP(int? PostId)
         {
-            Post post = db.Post.Find(id);
+            Post post = db.Post.Find(PostId);
             db.Post.Remove(post);
             db.SaveChanges();
             return RedirectToAction("Index");

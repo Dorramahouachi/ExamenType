@@ -42,7 +42,7 @@ namespace ExamenWeb.Controllers
 
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Create(int? PostId , [Bind(Include = "CommentId,contenu,dateComment,PostId,UserId")] Comment comment)
         {
             
@@ -95,5 +95,31 @@ namespace ExamenWeb.Controllers
             return View(comment);
         }
 
+        // GET: Comment/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Comment comment = db.Comment.Find(id);
+            if (comment == null)
+            {
+                return HttpNotFound();
+            }
+            return View(comment);
+        }
+
+        // POST: Multiple/Delete/5
+        [HttpPost]
+
+        public ActionResult DeleteC(int? CommentId)
+        {
+            Comment comment = db.Comment.Find(CommentId);
+            var id = comment.PostId;
+            db.Comment.Remove(comment);
+            db.SaveChanges();
+            return RedirectToAction("Index", new { PostId = id });
+        }
     }
 }

@@ -54,6 +54,7 @@ namespace ExamenWeb.Controllers
 
         // POST: Comment/Create
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Create([Bind(Include = "CommentId,contenu,dateComment,PostId,UserId")] Comment comment)
         {
             if (ModelState.IsValid)
@@ -119,14 +120,14 @@ namespace ExamenWeb.Controllers
         }
         
         // POST: Comment/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        [HttpPost]
+  
+        public ActionResult DeleteC(int? CommentId)
         {
-            Comment comment = db.Comment.Find(id);
+            Comment comment = db.Comment.Find(CommentId);
             db.Comment.Remove(comment);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index",new { PostId=comment.PostId});
         }
     }
 }

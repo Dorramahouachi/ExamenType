@@ -5,6 +5,7 @@
 }
 
 <script src="~/Scripts/jquery-1.10.2.js"></script>
+<script  src="~/Scripts/ckeditor/ckeditor.js"></script>
 <h2>Forum</h2>
 
 
@@ -14,18 +15,17 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Contenu, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Contenu, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="col-md-10" id="con">
+                @Html.TextAreaFor(model => model.Contenu, new { @class="ckeditor" })
                 @Html.ValidationMessageFor(model => model.Contenu, "", new { @class = "text-danger" })
             </div>
         </div>
 
-      
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -39,9 +39,9 @@
             @Html.TextBox("Vue", 0, new { htmlAttributes = new { @class = "form-control" } })
         </div>
         <div class="form-group" style="display:none;width:1px">
-           
-                @Html.TextBox("DatePost", DateTime.Now, new { htmlAttributes = new { @class = "form-control" } })
-         
+
+            @Html.TextBox("DatePost", DateTime.Now, new { htmlAttributes = new { @class = "form-control" } })
+
         </div>
     </div>
 }
@@ -50,208 +50,242 @@
 
 
 
-    @foreach (var pos in Model.postdetails)
-    {
-        <label> Publié le : @Html.DisplayFor(modelItem => pos.DatePost)</label>
-        <div style="background-color: aliceblue;width:1000px;height:50px">
-            <label>    @Html.DisplayFor(modelItem => pos.Contenu)</label>
-            <br />
+@foreach (var pos in Model.postdetails)
+{
+    <label> Publié le : @Html.DisplayFor(modelItem => pos.DatePost)</label>
+    <div style="background-color: aliceblue;width:1000px;height:50px">
+        <label>   @Html.Raw( pos.Contenu) </label>
+        <br />
 
-            @if (pos.UserId == 1)
-            {
+        @if (pos.UserId == 1)
+        {
 
-                @Html.ActionLink("Edit", "Edit", new { id = pos.PostId })
-                @Html.ActionLink("Delete", "Delete", new { id = pos.PostId })
+            @Html.ActionLink("Edit", "Edit", new { id = pos.PostId })
+            <a data-toggle="modal" data-id="@pos.PostId" title="Add this item"  href="#addBookDialog">delete</a>
 
-            }
-        </div>
+
+        }
+    </div>
         @Html.RouteLink("Comment", new { action = "Index", controller = "Multiple", PostId = pos.PostId })
-       
-         <label  num="@pos.PostId"   value="hi" id="hi" name="hi" class="like"  >ouii</label>
-      
-            <input id="@pos.PostId" name="butli" type="submit" value="Like" class="like" />
-      
 
-          <label id="hid" num="@pos.PostId"   value="hid" name="hid" class="dislike"> dislike </label>
-           <input id="@pos.PostId" name="butlid" type="submit" value="dislike" class="dislike"/>
-        @Html.HiddenFor(model => model.PostId)
-        @Html.HiddenFor(model => model.UserId)
-            
-         
-            <br />
-     
-    }
+        <label num="@pos.PostId" value="hi" id="hi" name="hi" class="like">ouii</label>
+
+        <input id="@pos.PostId" name="butli" type="submit" value="Like" class="like" />
+
+
+        <label id="hid" num="@pos.PostId" value="hid" name="hid" class="dislike"> dislike </label>
+            <input id="@pos.PostId" name="butlid" type="submit" value="dislike" class="dislike" />
+            @Html.HiddenFor(model => model.PostId)
+            @Html.HiddenFor(model => model.UserId)
+  
+
+    <div class="modal hide" id="addBookDialog">
+        <div class="modal-header">
+            <button class="close" data-dismiss="modal">×</button>
+            <h3 style="color:black"><b>close</b></h3>
+        </div>
+        <div class="modal-body">
+            <h1 style="color:black"><b>Voulez vous supprimez ce post ?</b></h1>
+            <input type="submit" name="bookId" id="bookId" class="bookId" value="supp" />
+        </div>
+    </div>
+    <br />
+}
+
 
 <script>
+   
+    $(document).on("click", ".open-AddBookDialog", function () {
+        var myBookId = $(this).data('id');
+        var myval = $(this).attr('value');
+        $(".modal-body #bookId").val('supprimer');
+        $(".bookId").click(function () {
+           
+
+            $.ajax({
+                url: '/Post/DeleteP',
+                type: "Post",
+                data: { PostId: myBookId },
+                success:function(response)
+                {
+                   location.reload(true)
+                }
+
+
+            })
+
+        });
+
+
+    });
+    //sep
     $(document).ready(function () {
+   
+        $('label[class="like"]').each(function (i, e) {
 
-          
-           $('label[class="like"]').each(function (i,e) {
-                   
-                  
-                    $.ajax({
-                        url: '/ReactPost/Count',
-                        type: "GET",
-                        data: { PostId: $(this).attr('num') },
-                        success: function (response) {
-                        
-                            $(e).text(response);
+
+            $.ajax({
+                url: '/ReactPost/Count',
+                type: "GET",
+                data: { PostId: $(this).attr('num') },
+                success: function (response) {
+
+                    $(e).text(response);
+                }
+
+
+            })
+        });
+
+
+        $('label[class="dislike"]').each(function (i, e) {
+
+
+            $.ajax({
+                url: '/ReactPost/CountD',
+                type: "GET",
+                data: { PostId: $(this).attr('num') },
+                success: function (response) {
+
+                    $(e).text(response);
+                }
+
+
+            })
+        });
+
+
+
+        // butt like tna7y dis
+        $(function () {
+            $(".like").click(function () {
+                var textValue = $(this).closest("input[name='butli']").attr('id');
+                $.ajax({
+                    url: '/ReactPost/Test',
+                    type: "POST",
+                    data: { UserId: 1, PostId: textValue },
+                    success: function (response) {
+                        if (response != 0) {
+
+
+                            $.ajax({
+                                url: '/ReactPost/CreateDel',
+                                type: "POST",
+                                data: { PostId: textValue, UserId: 1, TypeReact: "Like" },
+                                success: function (response) {
+
+                                    $('label[class="like"]').each(function (i, e) {
+
+
+                                        $.ajax({
+                                            url: '/ReactPost/Count',
+                                            type: "GET",
+                                            data: { PostId: $(this).attr('num') },
+                                            success: function (response) {
+
+                                                $(e).text(response);
+                                            }
+
+
+                                        })
+                                    });//end loop nbre like
+
+                                    $('label[class="dislike"]').each(function (i, e) {
+
+
+                                        $.ajax({
+                                            url: '/ReactPost/CountD',
+                                            type: "GET",
+                                            data: { PostId: $(this).attr('num') },
+                                            success: function (response) {
+
+                                                $(e).text(response);
+                                            }
+
+
+                                        })
+                                    });
+                                }
+                            });
+
+
+                        }
+
+                        else {
+
+
+                            $.ajax({
+                                url: '/ReactPost/TestD',
+                                type: "POST",
+                                data: { PostId: textValue, UserId: 1 },
+                                success: function (response) {
+
+                                    if (response == 0) {//maandou hata j aime add
+                                        $.ajax({
+                                            url: '/ReactPost/Create',
+                                            type: "POST",
+                                            data: { PostId: textValue, UserId: 1, TypeReact: "Like" },
+                                            success: function (response) {
+
+                                                $('label[class="like"]').each(function (i, e) {
+
+
+                                                    $.ajax({
+                                                        url: '/ReactPost/Count',
+                                                        type: "GET",
+                                                        data: { PostId: $(this).attr('num') },
+                                                        success: function (response) {
+
+                                                            $(e).text(response);
+                                                        }
+                                                    });
+                                                })
+                                            }
+                                        });
+                                    }
+                                    else {
+                                        //aandou jaime fasakhha
+                                        $.ajax({
+                                            url: '/ReactPost/DeleteConfirmed',
+                                            type: "POST",
+                                            data: { PostId: textValue, UserId: 1, TypeReact: "Like" },
+                                            success: function (response) {
+
+                                                $('label[class="like"]').each(function (i, e) {
+
+
+                                                    $.ajax({
+                                                        url: '/ReactPost/Count',
+                                                        type: "GET",
+                                                        data: { PostId: $(this).attr('num') },
+                                                        success: function (response) {
+
+                                                            $(e).text(response);
+                                                        }
+                                                    });
+                                                })
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+
+
+
+
+
+
+
+
                         }
 
 
-                    })
-                  });
-
-            
-                $('label[class="dislike"]').each(function (i, e) {
-
-
-                    $.ajax({
-                        url: '/ReactPost/CountD',
-                        type: "GET",
-                        data: { PostId: $(this).attr('num') },
-                        success: function (response) {
-                           
-                            $(e).text(response);
-                        }
-
-
-                    })
+                    }
                 });
-                   
-
-      
-        // butt like tna7y dis 
-                $(function () {
-                    $(".like").click(function () {
-                        var textValue = $(this).closest("input[name='butli']").attr('id');
-                        $.ajax({
-                            url: '/ReactPost/Test',
-                            type: "POST",
-                            data: { UserId: 1, PostId: textValue },
-                            success: function (response) {
-                                if (response != 0) {
+            });
+        });
 
 
-                                    $.ajax({
-                                        url: '/ReactPost/CreateDel',
-                                        type: "POST",
-                                        data: { PostId: textValue, UserId: 1, TypeReact: "Like" },
-                                        success: function (response) {
-
-                                            $('label[class="like"]').each(function (i, e) {
-
-
-                                                $.ajax({
-                                                    url: '/ReactPost/Count',
-                                                    type: "GET",
-                                                    data: { PostId: $(this).attr('num') },
-                                                    success: function (response) {
-                                                       
-                                                        $(e).text(response);
-                                                    }
-
-
-                                                })
-                                            });//end loop nbre like 
-
-                                            $('label[class="dislike"]').each(function (i, e) {
-
-
-                                                $.ajax({
-                                                    url: '/ReactPost/CountD',
-                                                    type: "GET",
-                                                    data: { PostId: $(this).attr('num') },
-                                                    success: function (response) {
-                                                      
-                                                        $(e).text(response);
-                                                    }
-
-
-                                                })
-                                            });
-                                        }
-                                    });
-
-
-                                }
-
-                                else {
-                                   
-
-                                    $.ajax({
-                                        url: '/ReactPost/TestD',
-                                        type: "POST",
-                                        data: { PostId: textValue, UserId: 1},
-                                        success: function (response) {
-
-                                            if (response == 0)
-                                            {//maandou hata j aime add
-                                                $.ajax({
-                                                    url: '/ReactPost/Create',
-                                                    type: "POST",
-                                                    data: { PostId: textValue, UserId: 1, TypeReact: "Like" },
-                                                    success: function (response) {
-
-                                                        $('label[class="like"]').each(function (i, e) {
-
-
-                                                            $.ajax({
-                                                                url: '/ReactPost/Count',
-                                                                type: "GET",
-                                                                data: { PostId: $(this).attr('num') },
-                                                                success: function (response) {
-
-                                                                    $(e).text(response);
-                                                                }
-                                                            });
-                                                        })
-                                                    }
-                                                });
-                                            }
-                                            else {
-                                                //aandou jaime fasakhha
-                                                $.ajax({
-                                                    url: '/ReactPost/DeleteConfirmed',
-                                                    type: "POST",
-                                                    data: { PostId: textValue, UserId: 1, TypeReact: "Like" },
-                                                    success: function (response) {
-
-                                                        $('label[class="like"]').each(function (i, e) {
-
-
-                                                            $.ajax({
-                                                                url: '/ReactPost/Count',
-                                                                type: "GET",
-                                                                data: { PostId: $(this).attr('num') },
-                                                                success: function (response) {
-
-                                                                    $(e).text(response);
-                                                                }
-                                                            });
-                                                        })
-                                                    }
-                                                });
-                                            }
-                                        }
-                                    });
-
-
-
-
-
-
-
-
-                                }
-
-
-                            }
-                        });
-                    });
-                });
-
-      
 
 
 
@@ -260,146 +294,146 @@
 
 
         // butt dislike tna7y lik
-                $(function () {
-                    $(".dislike").click(function () {
-                        var textValue = $(this).closest("input[name='butlid']").attr('id');
-                        $.ajax({
-                            url: '/ReactPost/TestD',
-                            type: "POST",
-                            data: { UserId: 1, PostId: textValue },
-                            success: function (response) {
-                                if (response != 0) {
+        $(function () {
+            $(".dislike").click(function () {
+                var textValue = $(this).closest("input[name='butlid']").attr('id');
+                $.ajax({
+                    url: '/ReactPost/TestD',
+                    type: "POST",
+                    data: { UserId: 1, PostId: textValue },
+                    success: function (response) {
+                        if (response != 0) {
 
 
-                                    $.ajax({
-                                        url: '/ReactPost/CreateDelD',
-                                        type: "POST",
-                                        data: { PostId: textValue, UserId: 1, TypeReact: "Dislike" },
-                                        success: function (response) {
+                            $.ajax({
+                                url: '/ReactPost/CreateDelD',
+                                type: "POST",
+                                data: { PostId: textValue, UserId: 1, TypeReact: "Dislike" },
+                                success: function (response) {
 
-                                            $('label[class="dislike"]').each(function (i, e) {
-
-
-                                                $.ajax({
-                                                    url: '/ReactPost/CountD',
-                                                    type: "GET",
-                                                    data: { PostId: $(this).attr('num') },
-                                                    success: function (response) {
-                                                      
-                                                        $(e).text(response);
-                                                    }
+                                    $('label[class="dislike"]').each(function (i, e) {
 
 
-                                                })
-                                            });//end loop nbre dislike 
+                                        $.ajax({
+                                            url: '/ReactPost/CountD',
+                                            type: "GET",
+                                            data: { PostId: $(this).attr('num') },
+                                            success: function (response) {
 
-                                            //here
-                                            $('label[class="like"]').each(function (i, e) {
-
-
-                                                $.ajax({
-                                                    url: '/ReactPost/Count',
-                                                    type: "GET",
-                                                    data: { PostId: $(this).attr('num') },
-                                                    success: function (response) {
-
-                                                        $(e).text(response);
-                                                    }
-                                                });
-                                            })
-                                        }
-                                    });
+                                                $(e).text(response);
+                                            }
 
 
+                                        })
+                                    });//end loop nbre dislike
+
+                                    //here
+                                    $('label[class="like"]').each(function (i, e) {
+
+
+                                        $.ajax({
+                                            url: '/ReactPost/Count',
+                                            type: "GET",
+                                            data: { PostId: $(this).attr('num') },
+                                            success: function (response) {
+
+                                                $(e).text(response);
+                                            }
+                                        });
+                                    })
                                 }
-
-                                else {
-
-
-                                    $.ajax({
-                                        url: '/ReactPost/Test',
-                                        type: "POST",
-                                        data: { PostId: textValue, UserId: 1 },
-                                        success: function (response) {
-
-                                            if (response == 0) {//maandou hata dislike add
-                                                $.ajax({
-                                                    url: '/ReactPost/Create',
-                                                    type: "POST",
-                                                    data: { PostId: textValue, UserId: 1, TypeReact: "Dislike" },
-                                                    success: function (response) {
-                                                        $('label[class="dislike"]').each(function (i, e) {
+                            });
 
 
-                                                            $.ajax({
-                                                                url: '/ReactPost/CountD',
-                                                                type: "GET",
-                                                                data: { PostId: $(this).attr('num') },
-                                                                success: function (response) {
+                        }
 
-                                                                    $(e).text(response);
-                                                                }
+                        else {
 
 
-                                                            })
-                                                        });
-                                                        //ici
-                                                    }
+                            $.ajax({
+                                url: '/ReactPost/Test',
+                                type: "POST",
+                                data: { PostId: textValue, UserId: 1 },
+                                success: function (response) {
+
+                                    if (response == 0) {//maandou hata dislike add
+                                        $.ajax({
+                                            url: '/ReactPost/Create',
+                                            type: "POST",
+                                            data: { PostId: textValue, UserId: 1, TypeReact: "Dislike" },
+                                            success: function (response) {
+                                                $('label[class="dislike"]').each(function (i, e) {
+
+
+                                                    $.ajax({
+                                                        url: '/ReactPost/CountD',
+                                                        type: "GET",
+                                                        data: { PostId: $(this).attr('num') },
+                                                        success: function (response) {
+
+                                                            $(e).text(response);
+                                                        }
+
+
+                                                    })
+                                                });
+                                                //ici
+                                            }
+                                        });
+                                    }
+                                    else {
+                                        //aandou dislike fasakhha
+                                        $.ajax({
+                                            url: '/ReactPost/DeleteConfirmed',
+                                            type: "POST",
+                                            data: { PostId: textValue, UserId: 1, TypeReact: "Dislike" },
+                                            success: function (response) {
+
+                                                $('label[class="dislike"]').each(function (i, e) {
+
+
+                                                    $.ajax({
+                                                        url: '/ReactPost/CountD',
+                                                        type: "GET",
+                                                        data: { PostId: $(this).attr('num') },
+                                                        success: function (response) {
+
+                                                            $(e).text(response);
+                                                        }
+
+
+                                                    })
                                                 });
                                             }
-                                            else {
-                                                //aandou dislike fasakhha
-                                                $.ajax({
-                                                    url: '/ReactPost/DeleteConfirmed',
-                                                    type: "POST",
-                                                    data: { PostId: textValue, UserId: 1, TypeReact: "Dislike" },
-                                                    success: function (response) {
-
-                                                        $('label[class="dislike"]').each(function (i, e) {
-
-
-                                                            $.ajax({
-                                                                url: '/ReactPost/CountD',
-                                                                type: "GET",
-                                                                data: { PostId: $(this).attr('num') },
-                                                                success: function (response) {
-
-                                                                    $(e).text(response);
-                                                                }
-
-
-                                                            })
-                                                        });
-                                                    }
-                                                });
-                                            }
-                                        }
-                                    });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                  
-
+                                        });
+                                    }
                                 }
+                            });
 
 
-                            }
-                        });
-                    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        }
+
+
+                    }
                 });
+            });
+        });
 
 
 
@@ -408,5 +442,4 @@
     });
 
 
-            </script>
-  
+</script>
