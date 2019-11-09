@@ -15,6 +15,8 @@
 
         @foreach (var pos in Model.postdetails)
         {
+            <label vu="@pos.PostId" value="vu" id="vu" name="vu" class="vu" style="display:none"></label>
+
             <tr>
                 <td>
 
@@ -176,6 +178,26 @@
 
     });
     $(document).ready(function () {
+
+        $('label[class="vu"]').each(function (i, e) {
+
+
+            $.ajax({
+                url: '/Post/Vue',
+                type: "GET",
+                data: { PostId: $(this).attr('vu') },
+                success: function (response) {
+
+                   
+                }
+
+
+            })
+        });
+
+
+
+
 
 
            $('label[class="like"]').each(function (i,e) {

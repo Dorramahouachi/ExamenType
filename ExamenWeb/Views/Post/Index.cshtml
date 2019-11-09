@@ -6,7 +6,10 @@
 
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <script  src="~/Scripts/ckeditor/ckeditor.js"></script>
+<!--<script src="~/Scripts/ckfinder/ckfinder.js"></script>-->
 <h2>Forum</h2>
+
+
 
 
 
@@ -17,11 +20,11 @@
     <div class="form-horizontal">
 
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.ValidationSummary(true, "", new { @class = "text-danger"  })
         <div class="form-group">
             @Html.LabelFor(model => model.Contenu, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10" id="con">
-                @Html.TextAreaFor(model => model.Contenu, new { @class="ckeditor" })
+                @Html.TextAreaFor(model => model.Contenu, new { @class="ckeditor", id = "editor" })
                 @Html.ValidationMessageFor(model => model.Contenu, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -46,52 +49,59 @@
     </div>
 }
 
+<div>
+  
+    @Html.ActionLink("Les plus recentes", "Recent", new { })
+    @Html.ActionLink("Les plus vues", "Vues", new { })
 
 
+</div>
+
+<div id="posts">
+    @foreach (var pos in Model.postdetails)
+    {
+        <label> Publié le : @Html.DisplayFor(modelItem => pos.DatePost)</label>
+        <div style="background-color: aliceblue;width:1000px;height:50px">
+            <label>   @Html.Raw(pos.Contenu) </label>
+            <br />
+
+            @if (pos.UserId == 1)
+            {
+
+                @Html.ActionLink("Edit", "Edit", new { id = pos.PostId })
+                <a data-toggle="modal" data-id="@pos.PostId" title="Add this item" href="#addBookDialog">delete</a>
 
 
-@foreach (var pos in Model.postdetails)
-{
-    <label> Publié le : @Html.DisplayFor(modelItem => pos.DatePost)</label>
-    <div style="background-color: aliceblue;width:1000px;height:50px">
-        <label>   @Html.Raw( pos.Contenu) </label>
-        <br />
-
-        @if (pos.UserId == 1)
-        {
-
-            @Html.ActionLink("Edit", "Edit", new { id = pos.PostId })
-            <a data-toggle="modal" data-id="@pos.PostId" title="Add this item"  href="#addBookDialog">delete</a>
-
-
-        }
-    </div>
+            }
+        </div>
         @Html.RouteLink("Comment", new { action = "Index", controller = "Multiple", PostId = pos.PostId })
-
-        <label num="@pos.PostId" value="hi" id="hi" name="hi" class="like">ouii</label>
+     //   <input type="submit" value="Comment" id="cmm" />
+       
+         <label num="@pos.PostId" value="hi" id="hi" name="hi" class="like">ouii</label>
 
         <input id="@pos.PostId" name="butli" type="submit" value="Like" class="like" />
 
 
         <label id="hid" num="@pos.PostId" value="hid" name="hid" class="dislike"> dislike </label>
-            <input id="@pos.PostId" name="butlid" type="submit" value="dislike" class="dislike" />
+        <input id="@pos.PostId" name="butlid" type="submit" value="dislike" class="dislike" />
             @Html.HiddenFor(model => model.PostId)
             @Html.HiddenFor(model => model.UserId)
-  
 
-    <div class="modal hide" id="addBookDialog">
-        <div class="modal-header">
-            <button class="close" data-dismiss="modal">×</button>
-            <h3 style="color:black"><b>close</b></h3>
-        </div>
-        <div class="modal-body">
-            <h1 style="color:black"><b>Voulez vous supprimez ce post ?</b></h1>
-            <input type="submit" name="bookId" id="bookId" class="bookId" value="supp" />
-        </div>
-    </div>
-    <br />
-}
 
+            <div class="modal hide" id="addBookDialog">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal">×</button>
+                    <h3 style="color:black"><b>close</b></h3>
+                </div>
+                <div class="modal-body">
+                    <h1 style="color:black"><b>Voulez vous supprimez ce post ?</b></h1>
+                    <input type="submit" name="bookId" id="bookId" class="bookId" value="supp" />
+                </div>
+            </div>
+            <br />
+    }
+
+</div>
 
 <script>
    
@@ -153,6 +163,8 @@
 
             })
         });
+
+
 
 
 

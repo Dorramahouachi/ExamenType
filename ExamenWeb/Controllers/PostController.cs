@@ -24,6 +24,36 @@ namespace ExamenWeb.Controllers
             return View(mymodel);
         }
 
+
+        public int Vue(int? PostId)
+        {
+
+            Post post = db.Post.Find(PostId);
+            post.vue=post.vue+1;
+            db.SaveChanges();
+            return 1;
+
+        }
+
+        // GET: Post
+        public ActionResult Recent()
+        {
+            var mymodel = new Multi();
+            mymodel.postdetails = db.Post.OrderByDescending(news => news.DatePost).ToList();
+            mymodel.reactdetails = db.ReactPost.ToList();
+            return View  (mymodel);
+        }
+
+
+        // GET: Post
+        public ActionResult Vues()
+        {
+            var mymodel = new Multi();
+            mymodel.postdetails = db.Post.OrderByDescending(news => news.vue).ToList();
+            mymodel.reactdetails = db.ReactPost.ToList();
+            return View(mymodel);
+        }
+
         // GET: Post/Details/5
         public ActionResult Details(int? id)
         {
@@ -117,5 +147,35 @@ namespace ExamenWeb.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
+        public void uploadnow(HttpPostedFileWrapper upload)
+        {
+            if (upload != null)
+            {
+                string ImageName = upload.FileName;
+                string path = System.IO.Path.Combine(Server.MapPath("~/Images/uploads"), ImageName);
+                upload.SaveAs(path);
+            }
+
+        }
+
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult UploadImage(HttpPostedFileBase upload, string CKEditorFuncNum, string CKEditor, string langCode)
+        {
+            string url; // url to return
+            string message; // message to display (optional)
+            message = "Image successfully saved ";
+
+            //do save image code here
+            url = "/" + Server.MapPath("~/Images/uploads") + "/" + upload.FileName;
+            string output = @"<html><body><script>window.parent.CKEDITOR.tools.callFunction(" + CKEditorFuncNum + ", \"" + url + "\", \"" + message + "\");</script></body></html>";
+
+            return Content(output);
+        }
+
+
     }
 }
+

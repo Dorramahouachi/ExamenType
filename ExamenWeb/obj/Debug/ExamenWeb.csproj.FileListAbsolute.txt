@@ -642,3 +642,6 @@ C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\Exam
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\obj\Debug\ExamenWeb.csprojResolveAssemblyReference.cache
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\obj\Debug\ExamenWeb.dll
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\obj\Debug\ExamenWeb.pdb
+C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\CKSource.CKFinder.Connector.Core.dll
+C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\Autofac.dll
+C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\CKSource.FileSystem.dll
