@@ -90,7 +90,8 @@ C:\wamp64\www\ExamenType\Data\bin\Debug\EntityFramework.SqlServer.xml
 C:\wamp64\www\ExamenType\Data\bin\Debug\fr\EntityFramework.resources.dll
 C:\wamp64\www\ExamenType\Data\bin\Debug\fr\EntityFramework.SqlServer.resources.dll
 C:\wamp64\www\ExamenType\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
-C:\wamp64\www\ExamenType\Data\obj\Debug\Data.Migrations.v1.resources
-C:\wamp64\www\ExamenType\Data\obj\Debug\Data.csproj.GenerateResource.Cache
 C:\wamp64\www\ExamenType\Data\obj\Debug\Data.dll
 C:\wamp64\www\ExamenType\Data\obj\Debug\Data.pdb
+C:\wamp64\www\ExamenType\Data\obj\Debug\Data.Migrations.v1.resources
+C:\wamp64\www\ExamenType\Data\obj\Debug\Data.csproj.GenerateResource.Cache
+C:\wamp64\www\ExamenType\Data\obj\Debug\Data.Migrations.citronMigration1.resources

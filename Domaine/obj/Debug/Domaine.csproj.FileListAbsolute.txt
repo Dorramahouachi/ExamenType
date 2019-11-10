@@ -67,6 +67,5 @@ C:\wamp64\www\ExamenType\Domaine\bin\Debug\EntityFramework.xml
 C:\wamp64\www\ExamenType\Domaine\bin\Debug\EntityFramework.SqlServer.xml
 C:\wamp64\www\ExamenType\Domaine\bin\Debug\fr\EntityFramework.resources.dll
 C:\wamp64\www\ExamenType\Domaine\bin\Debug\fr\EntityFramework.SqlServer.resources.dll
-C:\wamp64\www\ExamenType\Domaine\obj\Debug\Domaine.csprojResolveAssemblyReference.cache
 C:\wamp64\www\ExamenType\Domaine\obj\Debug\Domaine.dll
 C:\wamp64\www\ExamenType\Domaine\obj\Debug\Domaine.pdb
