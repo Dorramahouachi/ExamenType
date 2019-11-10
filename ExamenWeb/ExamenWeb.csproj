@@ -402,6 +402,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CalendriersController.cs" />
     <Compile Include="Controllers\CandidaturesController.cs" />
+    <Compile Include="Controllers\EntretienPhysiquesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
@@ -576,6 +577,10 @@
     <Content Include="Views\Calendriers\Index.cshtml" />
     <Content Include="Views\Calendriers\Create.cshtml" />
     <Content Include="Views\RHQuestions\CreateAnswer.cshtml" />
+    <Content Include="Views\Calendriers\View.cshtml" />
+    <Content Include="Views\EntretienPhysiques\Create.cshtml" />
+    <Content Include="Views\Candidatures\DetailsRH.cshtml" />
+    <Content Include="Views\Candidatures\EditRH.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

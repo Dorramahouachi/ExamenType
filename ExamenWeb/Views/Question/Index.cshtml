@@ -8,38 +8,45 @@
     <div class="container">
         <br />
         <br />
+        &nbsp;
+        &nbsp;
         <h3>Quiz</h3>
         <hr />
+        &nbsp;
+        &nbsp; <form action="@Url.Action("GetResults","Question")" method="post">
+            <ol>
+                @foreach (var question in ViewBag.Questions)
+                {
+                    <li>
+                        <b style="color:black"> @question.Content</b>
 
-     <form  action="@Url.Action("GetResults","Question")" method="post" >
-        <ol>
-            @foreach (var question in ViewBag.Questions)
-            {
-                <li>
-                    <b style="color:black"> @question.Content</b>
-                   
-                    <ul>
-                        @foreach (var answer in question.Answers)
-                        {
-                            <li>
-                                &nbsp;
-                                &nbsp;
-                                &nbsp;
-                                <input type="radio" name="question_@answer.QuestionID" value="@answer.AnswerID" />
-                                @answer.Content
+                        <ul>
+                            @foreach (var answer in question.Answers)
+                            {
+                                <li>
+                                    &nbsp;
+                                    &nbsp;
+                                    &nbsp;
+                                    <input type="radio" name="question_@answer.QuestionID" value="@answer.AnswerID" />
+                                    @answer.Content
 
-                            </li>
-                        }
-                    </ul>
-                </li>
-            }
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                }
 
-        </ol>
-        <br />
-        <li><input class="btn btn-default" type="submit" value="Create" /></li>
-        <br />
+            </ol>
+            <br />
+            <input class="btn ticker-btn" type="submit" value="Terminer" />
+            <br />
         </form>
+        <br />
+        <a class="btn ticker-btn" @Html.ActionLink("Back to List", "IndexC")></a>
     </div>
+    <br />
+    <br />
+    <br />
 </body>
-<!--style="color:aqua" -->
+
 </html>

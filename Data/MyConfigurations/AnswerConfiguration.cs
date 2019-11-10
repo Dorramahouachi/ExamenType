@@ -14,7 +14,8 @@ namespace Data.MyConfigurations
         {
             HasRequired(p => p.Question)
            .WithMany(c => c.Answers)
-           .HasForeignKey(p => p.QuestionID);                  
+           .HasForeignKey(p => p.QuestionID)
+           .WillCascadeOnDelete(true);
         }
     }
 }

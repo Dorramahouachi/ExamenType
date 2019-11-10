@@ -10,11 +10,13 @@ namespace Domaine
 {
     public class Candidature
     {
-       
+
         [Key]
         public int candidatureId { get; set; }
         public virtual User Users { get; set; }
         public int? UserId { get; set; }
+
+        public int score { get; set;}
         //[ForeignKey("Offer")]
         //private int offerId { get; set; }
         [DataType(DataType.Date)]

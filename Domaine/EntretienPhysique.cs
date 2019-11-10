@@ -13,7 +13,7 @@ namespace Domaine
         public int EntretienPhysiqueId { get; set; }
         /*[ForeignKey("Calendrier")]
         private int? CalendrierId { get; set; }*/
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         public DateTime DateEntretien { get; set; }
     }
 }

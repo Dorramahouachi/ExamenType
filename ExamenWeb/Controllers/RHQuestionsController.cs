@@ -21,6 +21,13 @@ namespace ExamenWeb.Controllers
         {
             return View(db.Questions.ToList());
         }
+       
+
+        public ActionResult IndexA()
+        {
+            return RedirectToAction("Index", "RHAnswer");
+
+        }
 
         // GET: RHQuestions/Details/5
         public ActionResult Details(int? id)
@@ -73,22 +80,17 @@ namespace ExamenWeb.Controllers
                 return HttpNotFound();
             }
             if (ModelState.IsValid)
-            { ans.QuestionID = id;
+            {
+                ans.QuestionID = id;
                 db.Answers.Add(ans);
                 db.SaveChanges();
-                // return RedirectToAction("Index");
-            }
-            return View(ans);
-          
-            /* if (ModelState.IsValid)
-                   {
-                       db.Questions.Find(quesId);
-                       db.Answers.Add(ans);
-                       db.SaveChanges();
-                       return RedirectToAction("IndexAnswer");
-                   }
+                return View(ans);
 
-                   return View(ans);*/
+            }
+            return RedirectToAction("Index", "RHAnswer");
+
+          
+          
         }
 
         // GET: RHQuestions/Edit/5

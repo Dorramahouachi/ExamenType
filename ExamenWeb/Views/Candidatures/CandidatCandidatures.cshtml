@@ -5,43 +5,66 @@
     Layout = "~/Views/Shared/_LayoutCustom.cshtml";
 }
 
-<h2>CandidatCandidatures</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Users.login)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.candidatureDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.etat)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Users.login)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.candidatureDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.etat)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.candidatureId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.candidatureId }) |
-            @Html.ActionLink("EtatCandidature", "EtatCandidature", new { id = item.candidatureId })
-         
-        </td>
-    </tr>
-}
+<div class="container">
+    <br />
 
-</table>
+    &nbsp;
+    &nbsp;
+
+    <h2>Mes Candidatures</h2>
+    &nbsp;
+    <br />
+    <br />
+    <br />
+    <table class="table">
+        <tr>
+
+            <th>
+                @Html.DisplayName("Date depôt")
+            </th>
+            <th>
+                @Html.DisplayName("Etat")
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.candidatureDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.etat)
+                </td>
+                <td>
+
+
+                    <a class="btn ticker-btn" @Html.ActionLink("Details", "Details", new { id = item.candidatureId })></a>
+
+
+                    @if (item.etat.ToString() == "Quizz")
+                    {
+
+                        <a class="btn ticker-btn" @Html.ActionLink("Quizz", "IndexQuizz", new { id = item.candidatureId })></a>
+                    }
+                    @if (item.score > 0 || (item.etat.ToString() == "accepted"))
+                    {
+
+                        <a class="btn ticker-btn" @Html.ActionLink("Entretien", "IndexCalendrier", new { id = item.candidatureId })></a>
+                    }
+
+                </td>
+            </tr>
+        }
+    </table>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+</div>
+

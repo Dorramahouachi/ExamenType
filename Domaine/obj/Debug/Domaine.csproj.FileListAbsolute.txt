@@ -64,6 +64,7 @@ D:\4ERP-BI1\PIDEV\ExamenType\Domaine\bin\Debug\System.Web.WebPages.Deployment.xm
 D:\4ERP-BI1\PIDEV\ExamenType\Domaine\bin\Debug\System.Web.WebPages.Razor.xml
 D:\4ERP-BI1\PIDEV\ExamenType\Domaine\bin\Debug\fr\EntityFramework.resources.dll
 D:\4ERP-BI1\PIDEV\ExamenType\Domaine\bin\Debug\fr\EntityFramework.SqlServer.resources.dll
+D:\4ERP-BI1\PIDEV\ExamenType\Domaine\obj\Debug\Domaine.csprojAssemblyReference.cache
 D:\4ERP-BI1\PIDEV\ExamenType\Domaine\obj\Debug\Domaine.csproj.CoreCompileInputs.cache
 D:\4ERP-BI1\PIDEV\ExamenType\Domaine\obj\Debug\Domaine.csproj.CopyComplete
 D:\4ERP-BI1\PIDEV\ExamenType\Domaine\obj\Debug\Domaine.dll

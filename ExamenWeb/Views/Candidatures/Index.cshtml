@@ -5,41 +5,55 @@
     Layout = "~/Views/Shared/_LayoutCustom.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Users.login)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.candidatureDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.etat)
-        </th>
-        <th></th>
-    </tr>
+<div class="container">
+    <br />
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Users.login)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.candidatureDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.etat)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.candidatureId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.candidatureId }) |
-        </td>
-    </tr>
-}
+    &nbsp;
+    &nbsp;
+    <h2>Les Candidatures </h2>
+    &nbsp;
+    <br />
+    <br />
+    <br />
+    <table class="table">
+        <tr>
 
-</table>
+            <th>
+                @Html.DisplayName("Date Depôt")
+            </th>
+            <th>
+                @Html.DisplayName("Etat")
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.candidatureDate, "Date depot")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.etat, "Etat")
+                </td>
+                <td>
+
+                    &nbsp;
+                    <a class="btn ticker-btn" @Html.ActionLink("Edit", "EditRH", new { id = item.candidatureId })></a>
+                    &nbsp;
+                    <a class="btn ticker-btn" @Html.ActionLink("Details", "DetailsRH", new { id = item.candidatureId })></a>
+                    &nbsp;
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+</div>

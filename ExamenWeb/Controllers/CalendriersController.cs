@@ -55,10 +55,11 @@ namespace ExamenWeb.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CalendrierId,Subject,Description,Start,End,ThemeColor,IsFullDay")] Calendrier calendrier)
+        public ActionResult Create([Bind(Include = "CalendrierId,Subject,Description,Start,End,ThemeColor")] Calendrier calendrier)
         {
             if (ModelState.IsValid)
             {
+                calendrier.IsFullDay = 0;
                 db.Calendrier.Add(calendrier);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -132,5 +133,7 @@ namespace ExamenWeb.Controllers
             }
             base.Dispose(disposing);
         }
+       
     }
+
 }

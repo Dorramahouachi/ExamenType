@@ -73,9 +73,8 @@
                         if (calEvent.end != null) {
                             $description.append($('<p/>').html('<b>End:</b>' + calEvent.end.format("DD-MMM-YYYY HH:mm a")));
                         }
-                        $description.append($('<p/>').html('<b>Description:</b>' + calEvent.description));
+                        $description.append($('<p/>').html('<b><a href="/Create">sincrire</a></b>'));
                         $('#myModal #pDetails').empty().html($description);
-
                         $('#myModal').modal();
                     }
                 })

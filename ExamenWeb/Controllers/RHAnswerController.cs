@@ -15,14 +15,11 @@ namespace ExamenWeb.Controllers
         private ExamenContext db = new ExamenContext();
 
         // GET: RHAnswer
-        public ActionResult IndexC(int? QuestionID)
-        {
-            return View(db.Answers.Where(com => com.QuestionID == QuestionID).ToList());
-        }
+        
 
         public ActionResult Index()
         {
-            return View(db.Answers.ToList());
+            return View(db.Answers.Where(com => com.Content != null).ToList());
         }
 
         public ActionResult Create()
@@ -44,9 +41,11 @@ namespace ExamenWeb.Controllers
 
             return View(ans);
         }
+        public ActionResult IndexA()
+        {
+            return RedirectToAction("Index", "RHQuestion");
 
-       
-
+        }
         // GET: Comment/Edit/5
         public ActionResult Edit(int? id)
         {

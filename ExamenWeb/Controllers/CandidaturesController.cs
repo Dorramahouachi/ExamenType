@@ -42,6 +42,19 @@ namespace ExamenWeb.Controllers
             }
             return View(candidature);
         }
+        public ActionResult DetailsRH(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Candidature candidature = db.Candidature.Find(id);
+            if (candidature == null)
+            {
+                return HttpNotFound();
+            }
+            return View(candidature);
+        }
 
         // GET: Candidatures/Create
         public ActionResult Create()
@@ -100,7 +113,38 @@ namespace ExamenWeb.Controllers
             ViewBag.UserId = new SelectList(db.Users, "UserId", "login", candidature.UserId);
             return View(candidature);
         }
+        // GET: Candidatures/Edit/5
+        public ActionResult EditRH(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Candidature candidature = db.Candidature.Find(id);
+            if (candidature == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.UserId = new SelectList(db.Users, "UserId", "login", candidature.UserId);
+            return View(candidature);
+        }
 
+        // POST: Candidatures/Edit/5
+        // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
+        // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditRH([Bind(Include = "candidatureId,UserId,candidatureDate,etat")] Candidature candidature)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(candidature).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.UserId = new SelectList(db.Users, "UserId", "login", candidature.UserId);
+            return View(candidature);
+        }
         // GET: Candidatures/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -129,7 +173,7 @@ namespace ExamenWeb.Controllers
 
 
         [HttpPost, ActionName("EtatCandidature")]
-        public ActionResult EtatCandidature(int id)
+        public ActionResult EtatCandidature(int? id)
         {
             /*  Candidature candidature = db.Candidature.Find(id);
               candidature.etat = Candidature.etatCandidature.accepted;
@@ -148,6 +192,18 @@ namespace ExamenWeb.Controllers
             }
             else
             return RedirectToAction("~/CandidatCandidatures");
+        }
+
+
+        public ActionResult IndexQuizz()
+        {
+            return RedirectToAction("Index", "Question");
+
+        }
+        public ActionResult IndexCalendrier()
+        {
+            return RedirectToAction("Index", "Calendriers");
+
         }
 
         protected override void Dispose(bool disposing)

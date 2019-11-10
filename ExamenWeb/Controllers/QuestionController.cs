@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
+using Domaine;
 
 namespace ExamenWeb.Controllers
 {
@@ -14,13 +16,17 @@ namespace ExamenWeb.Controllers
         // GET: Question
         public ActionResult Index()
         {
+          
             ViewBag.Questions = DbContext.Questions.ToList();
-            
             return View();
         }
+        public ActionResult IndexC()
+        {
+            return RedirectToAction("CandidatCandidatures", "Candidatures");
 
+        }
         [HttpPost]
-        public ActionResult GetResults(System.Web.Mvc.FormCollection formCollection)
+        public ActionResult GetResults(int? id,System.Web.Mvc.FormCollection formCollection, [Bind(Include = "score,etat")] Candidature candidature)
         {
           
             int score = 0;
@@ -41,6 +47,16 @@ namespace ExamenWeb.Controllers
                 }
             }
             ViewBag.score = score;
+            candidature = DbContext.Candidature.Find(1);
+            candidature.score = score;
+            if(score > 0)
+            {
+                candidature.etat = Candidature.etatCandidature.accepted;
+            }
+           
+            DbContext.SaveChanges();
+
+           
             return View("Result");
         }
     }

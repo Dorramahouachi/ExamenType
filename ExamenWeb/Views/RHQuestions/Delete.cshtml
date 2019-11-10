@@ -4,30 +4,42 @@
     ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_LayoutCustom.cshtml";
 }
+<div class="container">
+    <br />
 
-<h2>Delete</h2>
+    &nbsp;
+    &nbsp;
+    
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Question</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Content)
-        </dt>
+    <h3> êtes vous sûr de vouloir supprimer ?</h3>
+    <div>
+        <h4>Question</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Content)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Content)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Content)
+            </dd>
 
-    </dl>
+        </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn ticker-btn" /> |
+                <a class="btn ticker-btn"  @Html.ActionLink("Annuler", "Index")></a>
+               
+            </div>
+        }
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 </div>

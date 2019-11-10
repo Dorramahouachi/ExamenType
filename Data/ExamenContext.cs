@@ -34,11 +34,11 @@ namespace Data
         public DbSet<Answer> Answers { get; set; }
         
 
-        /*  protected override void OnModelCreating(DbModelBuilder modelBuilder)
+          protected override void OnModelCreating(DbModelBuilder modelBuilder)
           {
               modelBuilder.Conventions.Remove<IncludeMetadataConvention>();
-              modelBuilder.Configurations.Add(new QuestionConfiguration());
+             // modelBuilder.Configurations.Add(new QuestionConfiguration());
               modelBuilder.Configurations.Add(new AnswerConfiguration());
-          }*/
+          }
     }
 }
