@@ -1,0 +1,528 @@
+﻿
+@model ExamenWeb.Models.Multi
+@{
+    ViewBag.Title = "Les plus Vues";
+}
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+<!--<script src="~/Scripts/ckfinder/ckfinder.js"></script>-->
+<div class="container">
+    <h2>Forum</h2>
+    <div class="add">
+        @using (Html.BeginForm("Create", "Post", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Contenu, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10" id="con">
+                        @Html.TextAreaFor(model => model.Contenu, new { @class = "ckeditor", id = "editor" })
+                        @Html.ValidationMessageFor(model => model.Contenu, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+                <div class="form-group" style="display:none;width:1px">
+                    @Html.TextBox("UserId", 1, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="col-md-10" style="display:none;width:1px">
+                    @Html.TextBox("Vue", 0, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="form-group" style="display:none;width:1px">
+
+                    @Html.TextBox("DatePost", DateTime.Now, new { htmlAttributes = new { @class = "form-control" } })
+
+                </div>
+            </div>
+        }
+
+        <div style="padding-top:100px; width:150px">
+
+            @Html.ActionLink("Les plus recentes", "Recent", new { })
+            <br />
+            @Html.ActionLink("All", "Index", new { })
+
+
+        </div>
+    </div>
+    <div id="posts">
+
+        @foreach (var pos in Model.postdetails)
+        {
+            <div style="padding-left:85px">
+
+            </div>
+                <div class="pcontent">
+                    <label style="padding-left:10px;color:#000000"> Publié le : @Html.DisplayFor(modelItem => pos.DatePost)</label>
+                    <br />
+                    <label>   @Html.Raw(pos.Contenu) </label>
+                    <br />
+
+                    @if (pos.UserId == 1)
+                {
+
+                        @Html.ActionLink("Edit", "Edit", new { id = pos.PostId })
+                        <label num="@pos.PostId" value="vus" id="vus" name="vus" class="vus">Delete</label>
+
+
+                    }
+                </div>
+                <div style="padding-left:75px">
+                    @Html.RouteLink("Comment", new { action = "Index", controller = "Multiple", PostId = pos.PostId })
+
+
+
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                </div>
+                                <div class="modal-body" id="bodym">
+                                    voulez vous supprimez ce post ?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" id="del">Supprimer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="modal fade" id="myModal2">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close"
+                                            data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title">Modal title</h4>
+                                </div>
+                                <div class="modal-body" id="bodym2">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+
+
+
+
+
+                    <label num="@pos.PostId" value="hi" id="hi" name="hi" class="like">ouii</label>
+
+                    <input id="@pos.PostId" name="butli" type="submit" value="Like" class="like btn-success" />
+
+
+                    <label id="hid" num="@pos.PostId" value="hid" name="hid" class="dislike"> dislike </label>
+                    <input id="@pos.PostId" name="butlid" type="submit" value="dislike" class="dislike btn-danger" />
+                    @Html.HiddenFor(model => model.PostId)
+                    @Html.HiddenFor(model => model.UserId)
+
+                </div>
+                <br />
+        }
+
+    </div>
+</div>
+
+
+<script>
+
+
+
+        $('label[class="like"]').click(function () {
+            var idd= $(this).attr('num')
+            var url="/Post/ListL?PostId="+ idd;
+
+            $("#bodym2").load(url,function(){
+                $("#myModal2").modal("show");
+
+            })
+
+
+        });
+
+
+        $('label[class="dislike"]').click(function () {
+            var idd= $(this).attr('num')
+            var url="/Post/ListD?PostId="+ idd;
+
+            $("#bodym2").load(url,function(){
+                $("#myModal2").modal("show");
+
+            })
+
+
+        });
+
+//true  after
+
+
+
+    $(document).ready(function () {
+
+        $('label[class="vus"]').each(function (i, e) {
+            $(".vus").click(function () {
+                var idd  = $(this).attr('num');
+
+               $("#myModal").modal('show');
+
+               $("#del").click(function () {
+                   $.ajax({
+                       url: '/Post/DeleteP',
+                       type: "Post",
+                       data: { PostId:idd },
+                       success: function (response) {
+                           location.reload(true)
+                       }
+
+
+                   })
+
+
+               });
+                  })
+        });
+
+    });
+
+
+
+
+
+    //sep
+    $(document).ready(function () {
+
+
+
+
+
+
+
+
+
+        $('label[class="like"]').each(function (i, e) {
+
+
+            $.ajax({
+                url: '/ReactPost/Count',
+                type: "GET",
+                data: { PostId: $(this).attr('num') },
+                success: function (response) {
+
+                    $(e).text(response);
+                }
+
+
+            })
+        });
+
+
+        $('label[class="dislike"]').each(function (i, e) {
+
+
+            $.ajax({
+                url: '/ReactPost/CountD',
+                type: "GET",
+                data: { PostId: $(this).attr('num') },
+                success: function (response) {
+
+                    $(e).text(response);
+                }
+
+
+            })
+        });
+
+
+
+
+
+        // butt like tna7y dis
+        $(function () {
+            $(".like").click(function () {
+                var textValue = $(this).closest("input[name='butli']").attr('id');
+                $.ajax({
+                    url: '/ReactPost/Test',
+                    type: "POST",
+                    data: { UserId: 1, PostId: textValue },
+                    success: function (response) {
+                        if (response != 0) {
+
+
+                            $.ajax({
+                                url: '/ReactPost/CreateDel',
+                                type: "POST",
+                                data: { PostId: textValue, UserId: 1, TypeReact: "Like" },
+                                success: function (response) {
+
+                                    $('label[class="like"]').each(function (i, e) {
+
+
+                                        $.ajax({
+                                            url: '/ReactPost/Count',
+                                            type: "GET",
+                                            data: { PostId: $(this).attr('num') },
+                                            success: function (response) {
+
+                                                $(e).text(response);
+                                            }
+
+
+                                        })
+                                    });//end loop nbre like
+
+                                    $('label[class="dislike"]').each(function (i, e) {
+
+
+                                        $.ajax({
+                                            url: '/ReactPost/CountD',
+                                            type: "GET",
+                                            data: { PostId: $(this).attr('num') },
+                                            success: function (response) {
+
+                                                $(e).text(response);
+                                            }
+
+
+                                        })
+                                    });
+                                }
+                            });
+
+
+                        }
+
+                        else {
+
+
+                            $.ajax({
+                                url: '/ReactPost/TestD',
+                                type: "POST",
+                                data: { PostId: textValue, UserId: 1 },
+                                success: function (response) {
+
+                                    if (response == 0) {//maandou hata j aime add
+                                        $.ajax({
+                                            url: '/ReactPost/Create',
+                                            type: "POST",
+                                            data: { PostId: textValue, UserId: 1, TypeReact: "Like" },
+                                            success: function (response) {
+
+                                                $('label[class="like"]').each(function (i, e) {
+
+
+                                                    $.ajax({
+                                                        url: '/ReactPost/Count',
+                                                        type: "GET",
+                                                        data: { PostId: $(this).attr('num') },
+                                                        success: function (response) {
+
+                                                            $(e).text(response);
+                                                        }
+                                                    });
+                                                })
+                                            }
+                                        });
+                                    }
+                                    else {
+                                        //aandou jaime fasakhha
+                                        $.ajax({
+                                            url: '/ReactPost/DeleteConfirmed',
+                                            type: "POST",
+                                            data: { PostId: textValue, UserId: 1, TypeReact: "Like" },
+                                            success: function (response) {
+
+                                                $('label[class="like"]').each(function (i, e) {
+
+
+                                                    $.ajax({
+                                                        url: '/ReactPost/Count',
+                                                        type: "GET",
+                                                        data: { PostId: $(this).attr('num') },
+                                                        success: function (response) {
+
+                                                            $(e).text(response);
+                                                        }
+                                                    });
+                                                })
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+
+
+
+
+
+
+
+
+                        }
+
+
+                    }
+                });
+            });
+        });
+
+
+
+
+
+
+
+
+
+        // butt dislike tna7y lik
+        $(function () {
+            $(".dislike").click(function () {
+                var textValue = $(this).closest("input[name='butlid']").attr('id');
+                $.ajax({
+                    url: '/ReactPost/TestD',
+                    type: "POST",
+                    data: { UserId: 1, PostId: textValue },
+                    success: function (response) {
+                        if (response != 0) {
+
+
+                            $.ajax({
+                                url: '/ReactPost/CreateDelD',
+                                type: "POST",
+                                data: { PostId: textValue, UserId: 1, TypeReact: "Dislike" },
+                                success: function (response) {
+
+                                    $('label[class="dislike"]').each(function (i, e) {
+
+
+                                        $.ajax({
+                                            url: '/ReactPost/CountD',
+                                            type: "GET",
+                                            data: { PostId: $(this).attr('num') },
+                                            success: function (response) {
+
+                                                $(e).text(response);
+                                            }
+
+
+                                        })
+                                    });//end loop nbre dislike
+
+                                    //here
+                                    $('label[class="like"]').each(function (i, e) {
+
+
+                                        $.ajax({
+                                            url: '/ReactPost/Count',
+                                            type: "GET",
+                                            data: { PostId: $(this).attr('num') },
+                                            success: function (response) {
+
+                                                $(e).text(response);
+                                            }
+                                        });
+                                    })
+                                }
+                            });
+
+
+                        }
+
+                        else {
+
+
+                            $.ajax({
+                                url: '/ReactPost/Test',
+                                type: "POST",
+                                data: { PostId: textValue, UserId: 1 },
+                                success: function (response) {
+
+                                    if (response == 0) {//maandou hata dislike add
+                                        $.ajax({
+                                            url: '/ReactPost/Create',
+                                            type: "POST",
+                                            data: { PostId: textValue, UserId: 1, TypeReact: "Dislike" },
+                                            success: function (response) {
+                                                $('label[class="dislike"]').each(function (i, e) {
+
+
+                                                    $.ajax({
+                                                        url: '/ReactPost/CountD',
+                                                        type: "GET",
+                                                        data: { PostId: $(this).attr('num') },
+                                                        success: function (response) {
+
+                                                            $(e).text(response);
+                                                        }
+
+
+                                                    })
+                                                });
+                                                //ici
+                                            }
+                                        });
+                                    }
+                                    else {
+                                        //aandou dislike fasakhha
+                                        $.ajax({
+                                            url: '/ReactPost/DeleteConfirmed',
+                                            type: "POST",
+                                            data: { PostId: textValue, UserId: 1, TypeReact: "Dislike" },
+                                            success: function (response) {
+
+                                                $('label[class="dislike"]').each(function (i, e) {
+
+
+                                                    $.ajax({
+                                                        url: '/ReactPost/CountD',
+                                                        type: "GET",
+                                                        data: { PostId: $(this).attr('num') },
+                                                        success: function (response) {
+
+                                                            $(e).text(response);
+                                                        }
+
+
+                                                    })
+                                                });
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+
+ }
+
+
+                    }
+                });
+            });
+        });
+
+
+
+
+
+    });
+
+
+</script>

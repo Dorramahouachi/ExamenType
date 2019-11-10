@@ -89,6 +89,10 @@
     <Compile Include="Migrations\201911092156371_v7.Designer.cs">
       <DependentUpon>201911092156371_v7.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911101114169_v9.cs" />
+    <Compile Include="Migrations\201911101114169_v9.Designer.cs">
+      <DependentUpon>201911101114169_v9.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyConfigurations\AnswerConfiguration.cs" />
     <Compile Include="MyConfigurations\QuestionConfiguration.cs" />
@@ -131,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911092156371_v7.resx">
       <DependentUpon>201911092156371_v7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911101114169_v9.resx">
+      <DependentUpon>201911101114169_v9.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -80,6 +80,7 @@ D:\4ERP-BI1\PIDEV\ExamenType\Data\obj\Debug\Data.Migrations.v4.resources
 D:\4ERP-BI1\PIDEV\ExamenType\Data\obj\Debug\Data.Migrations.v5.resources
 D:\4ERP-BI1\PIDEV\ExamenType\Data\obj\Debug\Data.Migrations.v6.resources
 D:\4ERP-BI1\PIDEV\ExamenType\Data\obj\Debug\Data.Migrations.v7.resources
+D:\4ERP-BI1\PIDEV\ExamenType\Data\obj\Debug\Data.Migrations.v9.resources
 D:\4ERP-BI1\PIDEV\ExamenType\Data\obj\Debug\Data.csproj.GenerateResource.cache
 D:\4ERP-BI1\PIDEV\ExamenType\Data\obj\Debug\Data.csproj.CoreCompileInputs.cache
 D:\4ERP-BI1\PIDEV\ExamenType\Data\obj\Debug\Data.csproj.CopyComplete
