@@ -1,5 +1,6 @@
 ﻿using Data;
 using Domaine;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -7,6 +8,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
+using System.Web.Script.Services;
 
 namespace ExamenWeb.Controllers
 {
@@ -51,6 +54,19 @@ namespace ExamenWeb.Controllers
                 .Where(emp => emp.TypeReact == "Dislike").ToList().Count();
             return test;
         }
+
+       
+
+        [HttpGet]
+        public  ActionResult ListL()
+        {
+            
+            return PartialView(db.ReactPost.Where(emp => emp.TypeReact == "Like").ToList());
+
+
+        }
+
+
 
         public int TestD(int? UserId, int? PostId)
         {

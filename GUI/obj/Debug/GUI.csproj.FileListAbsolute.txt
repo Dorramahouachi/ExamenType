@@ -84,6 +84,8 @@ C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\GUI\
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\GUI\bin\Debug\Domaine.dll
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\GUI\bin\Debug\EntityFramework.dll
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\GUI\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\GUI\bin\Debug\PagedList.dll
+C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\GUI\bin\Debug\PagedList.Mvc.dll
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\GUI\bin\Debug\Service.Pattern.dll
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\GUI\bin\Debug\Services.dll
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\GUI\bin\Debug\Data.dll
@@ -92,6 +94,8 @@ C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\GUI\
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\GUI\bin\Debug\Services.pdb
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\GUI\bin\Debug\EntityFramework.xml
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\GUI\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\GUI\bin\Debug\PagedList.xml
+C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\GUI\bin\Debug\PagedList.Mvc.xml
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\GUI\bin\Debug\Data.pdb
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\GUI\bin\Debug\fr\EntityFramework.resources.dll
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\GUI\bin\Debug\fr\EntityFramework.SqlServer.resources.dll

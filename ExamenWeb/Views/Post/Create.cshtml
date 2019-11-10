@@ -7,53 +7,143 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Post</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Contenu, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Contenu, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Contenu, "", new { @class = "text-danger" })
-            </div>
+    <div class="container">
+        <div class="form-horizontal">
+
+            <h4>Produit</h4>
+            <hr />
+            <table id="table">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+
+                    <div class="candidate-description client-description applicants-content">
+
+                        <div class="language-print client-des clearfix">
+                            <div class="aplicants-pic pull-left">
+                                <img src="~/content/a.jpg" alt="">
+                            </div>
+                            <!-- end .aplicants-pic -->
+                            <div class="clearfix">
+                                <div class="pull-left">
+                                    <h5>hiba</h5>
+                                    <a href="#">prix $</a>
+                                </div>
+
+
+                            </div>
+
+                            <div class="aplicant-details-show clearfix">
+
+                                <p>
+                                    Quantité : 142
+                                </p>
+                            </div>
+                            <!-- end .aplicant-details-show -->
+                        </div> <!-- end .language-print -->
+
+                        <div class="candidate-details">
+
+                            <div class="toggle-content-client" style="display: none;">
+
+
+
+
+
+
+                                <div class="candidate-skills">
+                                    <div class="row mb20">
+                                        <div class="col-md-4 toggle">
+
+                                        </div> <!-- end .grid layout -->
+
+                                        <div class="col-md-8">
+                                            <div class="widget sidebar-widget jobs-search-widget">
+                                                <h5 class="widget-title">Panier</h5>
+                                                <tr>
+
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <div class="col-md-offset-15 col-md-3">
+                                                                Quantité:
+                                                                quanti
+                                                            </div>
+                                                        </div>
+
+                                                    </td>
+                                                    <td>
+
+                                                        <div class="form-group">
+                                                            <div class="col-md-offset-15 col-md-3">
+                                                                Id </div>
+                                                        </div>
+
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <div class="col-md-offset-18 col-md-12 ; color:fff;">
+
+                                                                <input type="submit" value="Ajouter au Panier" class="btn btn-default" />
+
+                                                            </div>
+                                                        </div>
+
+                                                    </td>
+
+                                                </tr>
+
+                                            </div>
+
+                                        </div> <!-- end .grid layout -->
+
+                                    </div> <!-- end .row -->
+
+
+
+
+
+                                </div> <!-- end .candidate-skills -->
+                                <!-- end .apply-share -->
+                            </div>
+                            <!-- end .toggle-content-client -->
+
+
+                            <div class="toggle-details text-right">
+                                <a class="btn btn-toggle" href="#">Info</a>
+
+                            </div>
+                            <!-- end .toggle-details -->
+                        </div> <!-- end .candidate-details -->
+
+                    </div>
+
+
+                
+            </table>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.vue, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.vue, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.vue, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-       
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.UserId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-        <div class="form-group" style="visibility: hidden">
-            <div class="col-md-10">
-                @Html.TextBox("DatePost", DateTime.Now, new { htmlAttributes = new { @class = "form-control" } })                
-            </div>
-        </div>
     </div>
+    <script>
+        function selectedRowToInput()
+        {
+            for(var i=1; i<table.rows.length;i++)
+            {
+                table.row[i].onclick = function () {
+                    rIndex = this.rowIdex;
+                    document.getElementById("idProduct").value = this.cell[0].innerHTML;
+                };
+            }
+        }
+
+    </script>
+
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>

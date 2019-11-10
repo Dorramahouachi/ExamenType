@@ -16,5 +16,7 @@ namespace ExamenWeb.Models
         public DateTime DatePost { get; set; }
         public int? UserId { get; set; }
         public List<ReactPost> reactdetails { get ;set;}
+        public List<ReactPost> reactpostdetails { get; set; }
+
     }
 }

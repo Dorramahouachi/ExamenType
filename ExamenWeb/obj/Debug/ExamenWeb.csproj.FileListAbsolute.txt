@@ -535,23 +535,24 @@ C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\ExamenType\ExamenWeb\bin\fr\M
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\ExamenType\ExamenWeb\obj\Debug\ExamenWeb.csprojResolveAssemblyReference.cache
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\ExamenType\ExamenWeb\obj\Debug\ExamenWeb.dll
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\ExamenType\ExamenWeb\obj\Debug\ExamenWeb.pdb
-C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\ApplicationInsights.config
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\roslyn\csc.exe
-C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\roslyn\VBCSCompiler.exe
+C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\ApplicationInsights.config
+C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\roslyn\Microsoft.CSharp.Core.targets
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\roslyn\Microsoft.VisualBasic.Core.targets
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\roslyn\System.Reflection.Metadata.dll
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\roslyn\vbc.exe
-C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\roslyn\VBCSCompiler.exe
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\ExamenWeb.dll.config
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\ExamenWeb.dll
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\ExamenWeb.pdb
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\Antlr3.Runtime.dll
+C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\CKSource.CKFinder.Connector.Core.dll
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\Data.dll
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\Domaine.dll
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\EntityFramework.dll
@@ -589,6 +590,8 @@ C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\Exam
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\System.Web.WebPages.dll
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\System.Web.WebPages.Razor.dll
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\WebGrease.dll
+C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\Autofac.dll
+C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\CKSource.FileSystem.dll
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\Data.pdb
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\Domaine.pdb
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\Service.Pattern.pdb
@@ -642,6 +645,3 @@ C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\Exam
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\obj\Debug\ExamenWeb.csprojResolveAssemblyReference.cache
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\obj\Debug\ExamenWeb.dll
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\obj\Debug\ExamenWeb.pdb
-C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\CKSource.CKFinder.Connector.Core.dll
-C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\Autofac.dll
-C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\ExamenWeb\bin\CKSource.FileSystem.dll

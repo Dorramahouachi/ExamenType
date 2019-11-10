@@ -4152,6 +4152,24 @@ body.mobile-nav-active #mobile-nav-toggle {
   background: #f9f9ff;
 }
 
+.add {
+    display:flex;
+    justify-content: space-between;
+}
+
+.like , .dislike{
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  line-height: 1.0;
+  border-radius: 0.4rem;
+}
+.pcontent {
+    width: 960px;
+    position: relative;
+    margin:0 auto;
+    line-height: 1.4em;
+    background-color: rgba(132, 144, 255, 0.2);
+}
 /*
 ################
                End Blog Details  Page style

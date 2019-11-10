@@ -21,9 +21,16 @@ namespace ExamenWeb.Controllers
             var mymodel = new Multi();
             mymodel.postdetails = db.Post.ToList();
             mymodel.reactdetails = db.ReactPost.ToList();
+          
+           
+            
             return View(mymodel);
         }
+        public ActionResult Search (string query, int startIndex, int pageSize)
+        {
 
+            return View();
+        }
 
         public int Vue(int? PostId)
         {
@@ -174,8 +181,22 @@ namespace ExamenWeb.Controllers
 
             return Content(output);
         }
+     
+        [HttpGet]
+        public PartialViewResult ListL(int? PostId)
+        {
+
+            List<ReactPost> listr = db.ReactPost.Where(emp => emp.TypeReact == "Like").Where(emp => emp.PostId == PostId).ToList();
+            ViewBag.ReactList = listr;
+
+            return PartialView(listr);
 
 
+        }
+        public ActionResult Chart()
+        {
+            return View();
+        }
     }
 }
 

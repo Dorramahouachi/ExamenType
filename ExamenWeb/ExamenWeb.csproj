@@ -379,6 +379,8 @@
     <Content Include="Views\Multiple\Edit.cshtml" />
     <Content Include="Views\Post\Recent.cshtml" />
     <Content Include="Views\Post\Vues.cshtml" />
+    <Content Include="Views\ReactPost\ListL.cshtml" />
+    <Content Include="Views\Post\ListL.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -391,7 +393,6 @@
     <Folder Include="Scripts\ckfinder\" />
     <Folder Include="Scripts\vendor\" />
     <Folder Include="Views\ReactComment\" />
-    <Folder Include="Views\ReactPost\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
