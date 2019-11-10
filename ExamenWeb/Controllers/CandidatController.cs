@@ -13,6 +13,8 @@ namespace ExamenWeb.Controllers
     public class CandidatController : Controller
     {
         IServiceCandidat cs = new ServiceCandidat();
+        IServiceCandidature cas = new ServiceCandidature();
+        IServiceOffer co = new ServiceOffer();
         IServiceUser us = new ServiceUser();
         IServiceContacts cls = new ServiceContacts();
         public ActionResult CompleteProfil()
@@ -120,7 +122,6 @@ namespace ExamenWeb.Controllers
             c.picture = cm.picture;
             c.experience = cm.experience;
             c.actualPost = cm.actualPost;
-
             return View(c);
         }
 
@@ -170,21 +171,24 @@ namespace ExamenWeb.Controllers
             Candidat cm = new Candidat();
             cm = cs.Get(t => t.UserId == id);
             CandidatModels c = new CandidatModels();
-            c.UserId = cm.UserId;
-            c.password = cm.password;
-            c.name = cm.name;
-            c.lastname = cm.lastname;
-            c.Mail = cm.Mail;
-            c.login = cm.login;
-            c.phoneContact = cm.phoneContact;
-            c.address = cm.address;
-            c.birthDate = cm.birthDate;
-            c.Country = cm.Country;
-            c.Skills = cm.Skills;
-            c.bio = cm.bio;
-            c.picture = cm.picture;
-            c.experience = cm.experience;
-            c.actualPost = cm.actualPost;
+            if(cm != null)
+            {
+                c.UserId = cm.UserId;
+                c.password = cm.password;
+                c.name = cm.name;
+                c.lastname = cm.lastname;
+                c.Mail = cm.Mail;
+                c.login = cm.login;
+                c.phoneContact = cm.phoneContact;
+                c.address = cm.address;
+                c.birthDate = cm.birthDate;
+                c.Country = cm.Country;
+                c.Skills = cm.Skills;
+                c.bio = cm.bio;
+                c.picture = cm.picture;
+                c.experience = cm.experience;
+                c.actualPost = cm.actualPost;
+            }
             return View(c);
         }
         
@@ -215,10 +219,31 @@ namespace ExamenWeb.Controllers
         {
             Contacts c = new Contacts();
             c = cls.Get(t => t.ContactId == id);
-            Console.WriteLine(c.Name);
             cls.Delete(c);
             cls.Commit();
-            return RedirectToAction("ContactsCandidat", new { id = id });
+            return RedirectToAction("ContactsCandidat", new { id = 9 });
+        }
+        public ActionResult Applyings(int id)
+        {
+            Offer o = new Offer();
+            List<Offer> ol = new List<Offer>();
+            IEnumerable<Candidature> c;
+            c = cas.GetMany(t => t.UserId == id);
+            foreach(var item in c)
+            {
+                o = co.Get(t => t.offerId == item.OfferId);
+                ol.Add(o);
+            }
+            return View(ol);
+        }
+
+        public ActionResult DeleteCandidature(int id)
+        {
+            Candidature c = new Candidature();
+            c = cas.Get(t => t.OfferId == id);
+            cas.Delete(c);
+            cas.Commit();
+            return RedirectToAction("Applyings", new { id = 9 });
         }
     }
 }

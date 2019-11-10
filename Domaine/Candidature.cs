@@ -14,10 +14,12 @@ namespace Domaine
         public int candidatureId { get; set; }
         public virtual User Users { get; set; }
         public int? UserId { get; set; }
-        //[ForeignKey("Offer")]
-        //private int offerId { get; set; }
-        public DateTime candidatureDate { get; set; }
-        [DataType(DataType.Date)]
+
+        public virtual Offer Offers { get; set; }
+        public int? OfferId { get; set; }
+        /*[DataType(DataType.Date)]
+        public DateTime candidatureDate { get; set; }*/
+        
         public String etat { get; set; }
         
     }

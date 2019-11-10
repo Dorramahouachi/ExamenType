@@ -1,0 +1,212 @@
+﻿@using Domaine;
+@using Services;
+@model IEnumerable<Domaine.Offer>
+    @{
+    ViewBag.Title = "OFFERS";
+    Layout = "~/Views/Shared/_LayoutCustom.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/fav.png">
+    <!-- Author Meta -->
+    <meta name="author" content="codepixer">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>Job Listing</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+    <!--
+    CSS
+    ============================================= -->
+    <link rel="stylesheet" href="css/linearicons.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/nice-select.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <header id="header" id="home">
+        <div class="container">
+            <div class="row align-items-center justify-content-between d-flex">
+                <div id="logo">
+                    <a href="index.html"><img src="img/logo.png" alt="" title="" /></a>
+                </div>
+                <nav id="nav-menu-container">
+                    <ul class="nav-menu">
+                        <li class="menu-active"><a href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="category.html">Category</a></li>
+                        <li><a href="price.html">Price</a></li>
+                        <li><a href="blog-home.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li class="menu-has-children">
+                            <a href="">Pages</a>
+                            <ul>
+                                <li><a href="elements.html">elements</a></li>
+                                <li><a href="search.html">search</a></li>
+                                <li><a href="single.html">single</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="ticker-btn" href="#">Signup</a></li>
+                        <li><a class="ticker-btn" href="#">Login</a></li>
+                    </ul>
+                </nav><!-- #nav-menu-container -->
+            </div>
+        </div>
+    </header><!-- #header -->
+    <!-- start banner Area -->
+    <section class="banner-area relative" id="home">
+        <div class="overlay overlay-bg"></div>
+        <div class="container">
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="about-content col-lg-12">
+                    <h1 class="text-white">
+                        Job category
+                    </h1>
+                    <p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="category.html"> Job category</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End banner Area -->
+    <!-- Start post Area -->
+    <section class="post-area section-gap">
+        <div class="container">
+            <div class="row justify-content-center d-flex">
+                <div class="col-lg-8 post-list">
+
+                    @{
+                        foreach (var item in Model)
+                        {
+                            <div class="single-post d-flex flex-row">
+                                <div class="details">
+                                    <div class="title d-flex flex-row justify-content-between">
+                                        <div class="titles">
+                                            <a href="single.html">
+                                                <h4>
+                                                    @Html.DisplayFor(i => item.titleOffer)<br />
+                                                Job Duration: @Html.DisplayFor(i => item.durationOffer)
+                                            </h4>
+                                        </a>
+                                    </div>
+                                 </div>
+                                    <p>
+                                        @Html.DisplayFor(i => item.titleOffer) for @Html.DisplayFor(i => item.durationOffer) with @Html.DisplayFor(i => item.salary)k $ as salary . located in @Html.DisplayFor(i => item.location)
+                                        and it's a @Html.DisplayFor(i => item.contractTypeOffer) job nature.
+                                    </p>
+                                    <h5>Job Nature: @Html.DisplayFor(i => item.contractTypeOffer)</h5>
+                                    <p class="address"><span class="lnr lnr-map"></span>@Html.DisplayFor(i => item.location)</p>
+                                    <p class="address"><span class="lnr lnr-database"></span> @Html.DisplayFor(i => item.salary)K</p>
+                                </div>
+                                <ul class="btns">
+                                    <!--<li><a href="#"><span class="lnr lnr-heart"></span></a></li>-->
+                                    @{
+                                        IServiceCandidature Sc = new ServiceCandidature();
+                                        Candidature c = new Candidature();
+                                        c = Sc.Get(t => t.OfferId == item.offerId);
+                                        if (c == null)
+                                        {
+                                            <li><a href="#">@Html.ActionLink("APPLY", "ApplyOffer", new { idOffer = item.offerId, idUser = 9 })</a></li>}
+                                        else
+                                        {
+                                            <li><a href="#">@Html.ActionLink("UNAPPLY", "UnApplyOffer", new { idOffer = item.offerId, idUser = 9 })</a></li> 
+                                        }
+                                    }
+                                   
+                                </ul>
+                            </div>
+                        }
+                    }
+                    
+                </div>
+                <div class="col-lg-4 sidebar">
+                    <div class="single-slidebar">
+                        <h4>Jobs by Location</h4>
+                        <ul class="cat-list">
+                            <li><a class="justify-content-between d-flex" href="category.html"><p>New York</p><span>37</span></a></li>
+                            <li><a class="justify-content-between d-flex" href="category.html"><p>Park Montana</p><span>57</span></a></li>
+                            <li><a class="justify-content-between d-flex" href="category.html"><p>Atlanta</p><span>33</span></a></li>
+                            <li><a class="justify-content-between d-flex" href="category.html"><p>Arizona</p><span>36</span></a></li>
+                            <li><a class="justify-content-between d-flex" href="category.html"><p>Florida</p><span>47</span></a></li>
+                            <li><a class="justify-content-between d-flex" href="category.html"><p>Rocky Beach</p><span>27</span></a></li>
+                            <li><a class="justify-content-between d-flex" href="category.html"><p>Chicago</p><span>17</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="single-slidebar">
+                        <h4>Top rated job posts</h4>
+                        <div class="active-relatedjob-carusel">
+                            <div class="single-rated">
+                                <img class="img-fluid" src="img/r1.jpg" alt="">
+                                <a href="single.html"><h4>Creative Art Designer</h4></a>
+                                <h6>Premium Labels Limited</h6>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
+                                </p>
+                                <h5>Job Nature: Full time</h5>
+                                <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
+                                <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
+                                <a href="#" class="btns text-uppercase">Apply job</a>
+                            </div>
+                            <div class="single-rated">
+                                <img class="img-fluid" src="img/r1.jpg" alt="">
+                                <a href="single.html"><h4>Creative Art Designer</h4></a>
+                                <h6>Premium Labels Limited</h6>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
+                                </p>
+                                <h5>Job Nature: Full time</h5>
+                                <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
+                                <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
+                                <a href="#" class="btns text-uppercase">Apply job</a>
+                            </div>
+                            <div class="single-rated">
+                                <img class="img-fluid" src="img/r1.jpg" alt="">
+                                <a href="single.html"><h4>Creative Art Designer</h4></a>
+                                <h6>Premium Labels Limited</h6>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
+                                </p>
+                                <h5>Job Nature: Full time</h5>
+                                <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
+                                <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
+                                <a href="#" class="btns text-uppercase">Apply job</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End post Area -->
+
+    <script src="js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+    <script src="js/easing.min.js"></script>
+    <script src="js/hoverIntent.js"></script>
+    <script src="js/superfish.min.js"></script>
+    <script src="js/jquery.ajaxchimp.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/parallax.min.js"></script>
+    <script src="js/mail-script.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
+
+
