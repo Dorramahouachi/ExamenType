@@ -25,7 +25,9 @@ namespace ExamenWeb.Controllers
         public ActionResult Index()
         {
             return RedirectToAction("Index", "Home", null);
+            
         }
+
 
     }
 }

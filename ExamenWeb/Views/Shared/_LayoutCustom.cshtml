@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
 <html lang="zxx" class="no-js">
 <head>
     <!-- Mobile Specific Meta -->
@@ -24,7 +25,6 @@
     <!-- #header -->
     @Styles.Render("~/Template/css")
 </head>
-
 <body>
     <header id="header" id="home">
         <div class="container">
@@ -50,7 +50,10 @@
                         </li>
                         <li><a class="ticker-btn" href="/Home/Sign">Signup</a></li>
                         <li><a class="ticker-btn" href="/Home/Log">Login</a></li>
-                    </ul>
+                        <li><a class="ticker-btn" href="/Home/Logout">LogOut</a></li>
+                        <p>Welcome  @User.Identity.GetUserName().ToString()</p> 
+                    </ul> 
+                           
                 </nav><!-- #nav-menu-container -->
             </div>
         </div>
@@ -135,6 +138,3 @@
  
 </body>
 </html>
-
-
-

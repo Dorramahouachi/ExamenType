@@ -65,6 +65,15 @@ namespace ExamenWeb.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "Nom d'utilisateur")]
+        public string username { get; set; }
+        [Required]
+        [Display(Name = "Prenom")]
+        public string FirstName { get; set; }
+        [Required]
+        [Display(Name = "Nom")]
+        public string LastName { get; set; }
+        [Required]
         [EmailAddress]
         [Display(Name = "Courrier électronique")]
         public string Email { get; set; }

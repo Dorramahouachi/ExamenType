@@ -13,7 +13,7 @@ using Newtonsoft.Json;
 
 using System.Threading.Tasks;
 using Domaine;
-using Web.Controllers;
+using ExamenWeb.Controllers;
 
 namespace ExamenWeb.Controllers
 {
@@ -24,9 +24,10 @@ namespace ExamenWeb.Controllers
         [HttpPost]
         public ActionResult Login()
         {
+            string username = Request["username"];
             string email = Request["email"];
             string password = Request["pass"];
-            var user = Context.Users.Where(u => u.Email == email && u.Password == password).FirstOrDefault();
+            var user = Context.Users.Where(u => u.Email == email && u.Password == password &&  u.Username == username).FirstOrDefault();
             if (user != null)
             {
                 var roles = user.Roles.Select(m => m.RoleName).ToArray();

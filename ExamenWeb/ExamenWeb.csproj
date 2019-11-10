@@ -376,7 +376,7 @@
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\Partials\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_LayoutCustom.cshtml" />
     <Content Include="Views\EntretienEnLigne\QuizTest.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
@@ -386,6 +386,8 @@
     <Content Include="Views\Home\CandidatV.cshtml" />
     <Content Include="Views\Admin\CreateUser.cshtml" />
     <Content Include="Views\Home\Sign.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Home\Logout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -398,7 +400,6 @@
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Roles\" />
     <Folder Include="Views\Users\" />
-    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

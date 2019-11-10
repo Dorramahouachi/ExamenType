@@ -95,3 +95,5 @@ C:\wamp64\www\ExamenType\Data\obj\Debug\Data.pdb
 C:\wamp64\www\ExamenType\Data\obj\Debug\Data.Migrations.v1.resources
 C:\wamp64\www\ExamenType\Data\obj\Debug\Data.csproj.GenerateResource.Cache
 C:\wamp64\www\ExamenType\Data\obj\Debug\Data.Migrations.citronMigration1.resources
+C:\wamp64\www\ExamenType\Data\obj\Debug\Data.Migrations.mig2.resources
+C:\wamp64\www\ExamenType\Data\obj\Debug\Data.Migrations.mig22.resources

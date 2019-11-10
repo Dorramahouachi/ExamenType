@@ -14,7 +14,7 @@ using ExamenWeb.Models;
 using ExamenWeb.DAL;
 using ExamenWeb.Controllers;
 
-namespace Web.Controllers
+namespace ExamenWeb.Controllers
 {
     public class HomeController : BaseController
     {
@@ -51,7 +51,12 @@ namespace Web.Controllers
 
         return View("CandidatV");
     }
-    public ActionResult Log()
+     public ActionResult Logout()
+        {
+
+            return View("Logout");
+        }
+        public ActionResult Log()
         {
             return View("Log");
         }
