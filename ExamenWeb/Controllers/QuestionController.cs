@@ -16,7 +16,7 @@ namespace ExamenWeb.Controllers
         // GET: Question
         public ActionResult Index()
         {
-          
+           
             ViewBag.Questions = DbContext.Questions.ToList();
             return View();
         }

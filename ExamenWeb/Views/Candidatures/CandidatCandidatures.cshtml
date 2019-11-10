@@ -48,7 +48,9 @@
                     @if (item.etat.ToString() == "Quizz")
                     {
 
-                        <a class="btn ticker-btn" @Html.ActionLink("Quizz", "IndexQuizz", new { id = item.candidatureId })></a>
+                        <a class="btn ticker-btn" @Html.ActionLink("Quizz", "IndexQuizz", new { id = item.candidatureId })>
+
+                        </a>
                     }
                     @if (item.score > 0 || (item.etat.ToString() == "accepted"))
                     {

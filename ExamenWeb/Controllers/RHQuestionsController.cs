@@ -67,7 +67,13 @@ namespace ExamenWeb.Controllers
             return View(question);
         }
 
-      
+
+        // GET: RHQuestions
+        public ActionResult CreateAnswer()
+        {
+            return View();
+        }
+        [HttpPost]
         public ActionResult CreateAnswer(int? id, [Bind(Include = "AnswerID,Content,Correct")] Answer ans)
         {
             if (id == null)
