@@ -8,6 +8,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Services;
+using System.Web.Services;
 
 namespace ExamenWeb.Controllers
 {
@@ -19,11 +21,9 @@ namespace ExamenWeb.Controllers
         public ActionResult Index()
         {
             var mymodel = new Multi();
-            mymodel.postdetails = db.Post.ToList();
+            mymodel.postdetails = db.Post.ToList().Take(3).ToList();
             mymodel.reactdetails = db.ReactPost.ToList();
-          
-           
-            
+            mymodel.postdetailsAll= db.Post.ToList();
             return View(mymodel);
         }
         public ActionResult Search (string query, int startIndex, int pageSize)
@@ -99,7 +99,9 @@ namespace ExamenWeb.Controllers
             return View(post);
         }
 
-        // GET: Post/Edit/5²        
+        // GET: Post/Edit/5² 
+        [ValidateInput(false)]
+
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -116,7 +118,8 @@ namespace ExamenWeb.Controllers
 
         // POST: Post/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
+
         public ActionResult Edit([Bind(Include = "PostId,contenu,datePost,UserId,vue")] Post post)
         {
             if (ModelState.IsValid)
@@ -193,10 +196,55 @@ namespace ExamenWeb.Controllers
 
 
         }
+
+
+        [HttpGet]
+        public PartialViewResult ListD(int? PostId)
+        {
+
+            List<ReactPost> listr = db.ReactPost.Where(emp => emp.TypeReact == "Dislike").Where(emp => emp.PostId == PostId).ToList();
+            ViewBag.ReactList = listr;
+
+            return PartialView(listr);
+
+
+        }
+
+
+        public ActionResult DashboardP()
+        {
+            var c = db.Post.ToList();
+           
+            ViewBag.Post = c;
+           
+
+            return View();
+        }
         public ActionResult Chart()
         {
             return View();
         }
+        public ActionResult  Pag(int start)
+        {
+            var st = (start * 3)-2;
+            var mymodel = new Multi();
+            mymodel.postdetails = db.Post.ToList().Skip(st-1).Take(3).ToList();
+               
+            mymodel.reactdetails = db.ReactPost.ToList();
+            mymodel.postdetailsAll = db.Post.ToList();
+            return View(mymodel);
+            
+        }
+
+      
+        public int nombre()
+        {
+         int   nomb = db.Post.ToList().Count();
+            
+            return nomb;
+            
+        }
+
     }
 }
 

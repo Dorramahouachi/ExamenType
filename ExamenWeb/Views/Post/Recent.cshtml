@@ -7,129 +7,217 @@
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <script src="~/Scripts/ckeditor/ckeditor.js"></script>
 <!--<script src="~/Scripts/ckfinder/ckfinder.js"></script>-->
-<h2>Forum</h2>
+<div class="container">
+    <h2>Forum</h2>
+    <div class="add">
+        @using (Html.BeginForm("Create", "Post", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Contenu, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10" id="con">
+                        @Html.TextAreaFor(model => model.Contenu, new { @class = "ckeditor", id = "editor" })
+                        @Html.ValidationMessageFor(model => model.Contenu, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
 
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+                <div class="form-group" style="display:none;width:1px">
+                    @Html.TextBox("UserId", 1, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="col-md-10" style="display:none;width:1px">
+                    @Html.TextBox("Vue", 0, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="form-group" style="display:none;width:1px">
 
+                    @Html.TextBox("DatePost", DateTime.Now, new { htmlAttributes = new { @class = "form-control" } })
 
-
-@using (Html.BeginForm("Create", "Post", FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Contenu, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10" id="con">
-                @Html.TextAreaFor(model => model.Contenu, new { @class = "ckeditor", id = "editor" })
-                @Html.ValidationMessageFor(model => model.Contenu, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
+        }
 
+        <div style="padding-top:100px; width:150px">
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-        <div class="form-group" style="display:none;width:1px">
-            @Html.TextBox("UserId", 1, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-        <div class="col-md-10" style="display:none;width:1px">
-            @Html.TextBox("Vue", 0, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-        <div class="form-group" style="display:none;width:1px">
+            @Html.ActionLink("Les plus recentes", "Recent", new { })
+            <br />
+            @Html.ActionLink("All", "Index", new { })
 
-            @Html.TextBox("DatePost", DateTime.Now, new { htmlAttributes = new { @class = "form-control" } })
 
         </div>
     </div>
-}
+    <div id="posts">
 
-<div>
-    @Html.ActionLink("Les plus vues", "Vues", new { })
+        @foreach (var pos in Model.postdetails)
+        {
+            <div style="padding-left:85px">
 
-    @Html.ActionLink("All", "Index", new { })
+            </div>
+                <div class="pcontent">
+                    <label style="padding-left:10px;color:#000000"> Publié le : @Html.DisplayFor(modelItem => pos.DatePost)</label>
+                    <br />
+                    <label>   @Html.Raw(pos.Contenu) </label>
+                    <br />
+
+                    @if (pos.UserId == 1)
+                {
+
+                        @Html.ActionLink("Edit", "Edit", new { id = pos.PostId })
+                        <label num="@pos.PostId" value="vus" id="vus" name="vus" class="vus">Delete</label>
 
 
+                    }
+                </div>
+                <div style="padding-left:75px">
+                    @Html.RouteLink("Comment", new { action = "Index", controller = "Multiple", PostId = pos.PostId })
+
+
+
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                </div>
+                                <div class="modal-body" id="bodym">
+                                    voulez vous supprimez ce post ?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" id="del">Supprimer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="modal fade" id="myModal2">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close"
+                                            data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title">Modal title</h4>
+                                </div>
+                                <div class="modal-body" id="bodym2">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+
+
+
+
+
+                    <label num="@pos.PostId" value="hi" id="hi" name="hi" class="like">ouii</label>
+
+                    <input id="@pos.PostId" name="butli" type="submit" value="Like" class="like btn-success" />
+
+
+                    <label id="hid" num="@pos.PostId" value="hid" name="hid" class="dislike"> dislike </label>
+                    <input id="@pos.PostId" name="butlid" type="submit" value="dislike" class="dislike btn-danger" />
+                    @Html.HiddenFor(model => model.PostId)
+                    @Html.HiddenFor(model => model.UserId)
+
+                </div>
+                <br />
+        }
+
+    </div>
 </div>
 
-<div id="posts">
-    @foreach (var pos in Model.postdetails)
-    {
-        <label> Publié le : @Html.DisplayFor(modelItem => pos.DatePost)</label>
-        <div style="background-color: aliceblue;width:1000px;height:50px">
-            <label>   @Html.Raw(pos.Contenu) </label>
-            <br />
-
-            @if (pos.UserId == 1)
-            {
-
-                @Html.ActionLink("Edit", "Edit", new { id = pos.PostId })
-                <a data-toggle="modal" data-id="@pos.PostId" title="Add this item" href="#addBookDialog">delete</a>
-
-
-            }
-        </div>
-        @Html.RouteLink("Comment", new { action = "Index", controller = "Multiple", PostId = pos.PostId })
-        //   <input type="submit" value="Comment" id="cmm" />
-
-        <label num="@pos.PostId" value="hi" id="hi" name="hi" class="like">ouii</label>
-
-        <input id="@pos.PostId" name="butli" type="submit" value="Like" class="like" />
-
-
-        <label id="hid" num="@pos.PostId" value="hid" name="hid" class="dislike"> dislike </label>
-        <input id="@pos.PostId" name="butlid" type="submit" value="dislike" class="dislike" />
-        @Html.HiddenFor(model => model.PostId)
-        @Html.HiddenFor(model => model.UserId)
-
-
-        <div class="modal hide" id="addBookDialog">
-            <div class="modal-header">
-                <button class="close" data-dismiss="modal">×</button>
-                <h3 style="color:black"><b>close</b></h3>
-            </div>
-            <div class="modal-body">
-                <h1 style="color:black"><b>Voulez vous supprimez ce post ?</b></h1>
-                <input type="submit" name="bookId" id="bookId" class="bookId" value="supp" />
-            </div>
-        </div>
-            <br />
-    }
-
-</div>
 
 <script>
 
-    $(document).on("click", ".open-AddBookDialog", function () {
-        var myBookId = $(this).data('id');
-        var myval = $(this).attr('value');
-        $(".modal-body #bookId").val('supprimer');
-        $(".bookId").click(function () {
 
 
-            $.ajax({
-                url: '/Post/DeleteP',
-                type: "Post",
-                data: { PostId: myBookId },
-                success:function(response)
-                {
-                   location.reload(true)
-                }
+        $('label[class="like"]').click(function () {
+            var idd= $(this).attr('num')
+            var url="/Post/ListL?PostId="+ idd;
 
+            $("#bodym2").load(url,function(){
+                $("#myModal2").modal("show");
 
             })
+
 
         });
 
 
+        $('label[class="dislike"]').click(function () {
+            var idd= $(this).attr('num')
+            var url="/Post/ListD?PostId="+ idd;
+
+            $("#bodym2").load(url,function(){
+                $("#myModal2").modal("show");
+
+            })
+
+
+        });
+
+//true  after
+
+
+
+    $(document).ready(function () {
+
+        $('label[class="vus"]').each(function (i, e) {
+            $(".vus").click(function () {
+                var idd  = $(this).attr('num');
+
+               $("#myModal").modal('show');
+
+               $("#del").click(function () {
+                   $.ajax({
+                       url: '/Post/DeleteP',
+                       type: "Post",
+                       data: { PostId:idd },
+                       success: function (response) {
+                           location.reload(true)
+                       }
+
+
+                   })
+
+
+               });
+                  })
+        });
+
     });
+
+
+
+
+
     //sep
     $(document).ready(function () {
+
+
+
+
+
+
+
+
 
         $('label[class="like"]').each(function (i, e) {
 
@@ -422,24 +510,7 @@
                                 }
                             });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        }
+ }
 
 
                     }

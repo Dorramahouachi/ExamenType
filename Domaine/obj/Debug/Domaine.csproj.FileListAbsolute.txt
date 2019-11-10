@@ -65,5 +65,6 @@ C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\Doma
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\Domaine\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\Domaine\bin\Debug\fr\EntityFramework.resources.dll
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\Domaine\bin\Debug\fr\EntityFramework.SqlServer.resources.dll
+C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\Domaine\obj\Debug\Domaine.csprojResolveAssemblyReference.cache
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\Domaine\obj\Debug\Domaine.dll
 C:\Users\DELL\Desktop\ESPRIT 4BI\1ER SEMESTRE\fuck\actuelle crud\ExamenType\Domaine\obj\Debug\Domaine.pdb

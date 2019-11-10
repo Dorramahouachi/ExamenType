@@ -1,7 +1,7 @@
 ﻿
 @model ExamenWeb.Models.Multi
 @{
-    ViewBag.Title = "Les plus Vues";
+    ViewBag.Title = "Index";
 }
 
 <script src="~/Scripts/jquery-1.10.2.js"></script>
@@ -50,11 +50,14 @@
 
             @Html.ActionLink("Les plus recentes", "Recent", new { })
             <br />
-            @Html.ActionLink("All", "Index", new { })
+            @Html.ActionLink("Les plus vues", "Vues", new { })
 
 
         </div>
     </div>
+
+
+
     <div id="posts">
 
         @foreach (var pos in Model.postdetails)
@@ -69,13 +72,17 @@
                     <br />
 
                     @if (pos.UserId == 1)
-                {
+                    {
 
                         @Html.ActionLink("Edit", "Edit", new { id = pos.PostId })
+                        //  <label num="@pos.PostId" value="ed" id="ed" name="ed" class="ed">modifier</label>
+
                         <label num="@pos.PostId" value="vus" id="vus" name="vus" class="vus">Delete</label>
+                        //    <label num="@pos.PostId" value="ed" id="ed"name="ed" class="ed">modifier </label>
 
 
                     }
+
                 </div>
                 <div style="padding-left:75px">
                     @Html.RouteLink("Comment", new { action = "Index", controller = "Multiple", PostId = pos.PostId })
@@ -98,7 +105,6 @@
                             </div>
                         </div>
                     </div>
-
 
 
 
@@ -143,11 +149,86 @@
     </div>
 </div>
 
+@{
+    var nb = Model.postdetailsAll.Count / 3;
+    int paginator;
+    if (nb != 0)
+    { paginator = nb + 1; }
+    else { paginator = nb; }
+}
+<div style="padding-left:590px">
+    <button class="btn btn-default">  @Html.RouteLink("1", new { action = "Index", controller = "Post" }) </button>
+
+    @for (int i = 2; i <= paginator; i++)
+    {
+        <button class="btn btn-default">  @Html.RouteLink(i.ToString(), new { action = "Pag", controller = "Post", start = @i }) </button>
+
+    }
+</div>
+<br />
+<br />
+
 
 <script>
 
 
 
+
+
+        $('label[class="ed"]').click(function () {
+            $("#edt").show();
+            /*$.ajax({
+                url: '/Post/Edit',
+                type: "Post",
+                data: { PostId: idd , Contenu:cont },
+                success: function (response) {
+                    location.reload(true)
+                }
+
+
+            })*/
+
+        });
+
+
+
+
+
+
+
+    $(function () {
+        $(".pagi").click(function () {
+            var textValue = $(this).closest("input[name='pagi']").attr('id');
+            var st = parseInt(textValue);
+            $.ajax({
+                url: '/Post/Pag',
+                type: "Post",
+                success: function (response) {
+                    window.load(response)
+                }
+
+            })
+
+
+        });
+    });
+
+//edit
+    /*$('label[class="ed"]').click(function (i, e) {
+        var idd = $(this).attr('num')
+        var url = "/Post/Edit?PostId=" + idd;
+
+        $("#bodym3").load(url, function () {
+            $("#myModal3").modal("show");
+
+        })
+
+
+    });
+    */
+
+
+   //true
         $('label[class="like"]').click(function () {
             var idd= $(this).attr('num')
             var url="/Post/ListL?PostId="+ idd;
@@ -203,7 +284,7 @@
         });
 
     });
-
+    //edit
 
 
 

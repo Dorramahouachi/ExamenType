@@ -17,6 +17,7 @@ namespace ExamenWeb.Models
         public int? UserId { get; set; }
         public List<ReactPost> reactdetails { get ;set;}
         public List<ReactPost> reactpostdetails { get; set; }
+        public List<Post> postdetailsAll { get; set; }
 
     }
 }

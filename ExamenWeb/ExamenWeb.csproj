@@ -368,7 +368,6 @@
     <Content Include="Views\Comment\Delete.cshtml" />
     <Content Include="Views\Post\Details.cshtml" />
     <Content Include="Views\Post\Create.cshtml" />
-    <Content Include="Views\Post\Edit.cshtml" />
     <Content Include="Views\Post\Delete.cshtml" />
     <Content Include="Views\Chat\Index.cshtml" />
     <Content Include="Views\Chat\Create.cshtml" />
@@ -381,6 +380,12 @@
     <Content Include="Views\Post\Vues.cshtml" />
     <Content Include="Views\ReactPost\ListL.cshtml" />
     <Content Include="Views\Post\ListL.cshtml" />
+    <Content Include="Views\Post\ListD.cshtml" />
+    <Content Include="Views\Post\Chart.cshtml" />
+    <Content Include="Views\Post\Pag.cshtml" />
+    <Content Include="Views\Post\Edit.cshtml" />
+    <Content Include="Views\Comment\ListL.cshtml" />
+    <Content Include="Views\Comment\ListD.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

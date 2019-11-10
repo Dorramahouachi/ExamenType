@@ -68,9 +68,8 @@ namespace ExamenWeb.Controllers
         }
 
 
-
         // GET: Comment/Edit/5
-        public ActionResult Edit(int? id)
+         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -90,8 +89,9 @@ namespace ExamenWeb.Controllers
 
 
         // POST: Comment/Edit/5
+        
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Edit([Bind(Include = "CommentId,contenu,dateComment")] Comment comment)
         {
             if (ModelState.IsValid)
@@ -99,7 +99,7 @@ namespace ExamenWeb.Controllers
                 comment.UserId = 2;
                 db.Entry(comment).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index",new { PostId = comment.PostId });
             }
             return View(comment);
         }
@@ -129,5 +129,32 @@ namespace ExamenWeb.Controllers
             db.SaveChanges();
             return RedirectToAction("Index",new { PostId=comment.PostId});
         }
+
+
+        [HttpGet]
+        public PartialViewResult ListL(int? CommentId)
+        {
+
+            List<ReactComment> listr = db.ReactComment.Where(emp => emp.TypeReact == "Like").Where(emp => emp.CommentId == CommentId).ToList();
+            ViewBag.ReactList = listr;
+
+            return PartialView(listr);
+
+
+        }
+
+
+        [HttpGet]
+        public PartialViewResult ListD(int? CommentId)
+        {
+
+            List<ReactComment> listr = db.ReactComment.Where(emp => emp.TypeReact == "Dislike").Where(emp => emp.CommentId == CommentId).ToList();
+            ViewBag.ReactList = listr;
+
+            return PartialView(listr);
+
+
+        }
+
     }
 }

@@ -55,186 +55,188 @@
 
         </div>
     </div>
-    <div id="posts">
+    
+    
+    
+    <div id="posts" >
 
         @foreach (var pos in Model.postdetails)
         {
-            <label> Publié le : @Html.DisplayFor(modelItem => pos.DatePost)</label>
-            <div class="pcontent">
-                <label>   @Html.Raw(pos.Contenu) </label>
-                <br />
+            <div style="padding-left:85px">
+               
+                </div>
+                <div class="pcontent">
+                    <label style="padding-left:10px;color:#000000"> Publié le : @Html.DisplayFor(modelItem => pos.DatePost)</label>
+                    <br />
+                    <label>   @Html.Raw(pos.Contenu) </label>
+                    <br />
 
-                @if (pos.UserId == 1)
-                {
+                    @if (pos.UserId == 1)
+                    {
 
-                    @Html.ActionLink("Edit", "Edit", new { id = pos.PostId })
-                    <label num="@pos.PostId" value="vus" id="vus" name="vus" class="vus">Delete</label>
+                        @Html.ActionLink("Edit", "Edit", new { id = pos.PostId })
+                     //  <label num="@pos.PostId" value="ed" id="ed" name="ed" class="ed">modifier</label>
 
-
-                }
-            </div>
-            @Html.RouteLink("Comment", new { action = "Index", controller = "Multiple", PostId = pos.PostId })
-            //   <input type="submit" value="Comment" id="cmm" />
+                        <label num="@pos.PostId" value="vus" id="vus" name="vus" class="vus">Delete</label>
+                    //    <label num="@pos.PostId" value="ed" id="ed"name="ed" class="ed">modifier </label>
 
 
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        </div>
-                        <div class="modal-body" id="bodym">
-                            voulez vous supprimez ce post ?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" id="del">Supprimer</button>
+                    }
+                    @Html.RouteLink("Comment", new { action = "Index", controller = "Multiple", PostId = pos.PostId })
+
+
+                </div>
+                <div style="padding-left:75px">
+
+
+
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                </div>
+                                <div class="modal-body" id="bodym">
+                                    voulez vous supprimez ce post ?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" id="del">Supprimer</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+
+
+                    <div class="modal fade" id="myModal2">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close"
+                                            data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title">Modal title</h4>
+                                </div>
+                                <div class="modal-body" id="bodym2">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+
+
+
+
+
+                    <label num="@pos.PostId" value="hi" id="hi" name="hi" class="like">ouii</label>
+
+                    <input id="@pos.PostId" name="butli" type="submit" value="Like" class="like btn-success" />
+
+
+                    <label id="hid" num="@pos.PostId" value="hid" name="hid" class="dislike"> dislike </label>
+                    <input id="@pos.PostId" name="butlid" type="submit" value="dislike" class="dislike btn-danger" />
+                    @Html.HiddenFor(model => model.PostId)
+                    @Html.HiddenFor(model => model.UserId)
+
                 </div>
-            </div>
-
-            <a href="#" class="btn btn-success" id="detai"><i class="glyphicon glyphicon-eye-open"></i>see </a> 
-
-
-        
-            <div class="modal fade" id="myModal2">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close"
-                                    data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <h4 class="modal-title">Modal title</h4>
-                        </div>
-                        <div class="modal-body" id="bodym2">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-            </div><!-- /.modal -->
-
-
-
-
-
-            <label num="@pos.PostId" value="hi" id="hi" name="hi" class="like">ouii</label>
-
-            <input id="@pos.PostId" name="butli" type="submit" value="Like" class="like btn-success" />
-
-
-            <label id="hid" num="@pos.PostId" value="hid" name="hid" class="dislike"> dislike </label>
-            <input id="@pos.PostId" name="butlid" type="submit" value="dislike" class="dislike btn-danger" />
-            @Html.HiddenFor(model => model.PostId)
-            @Html.HiddenFor(model => model.UserId)
-
-
-            <br />
+                <br />
         }
 
-    </div>
+            </div>
 </div>
 
+@{ 
+    var nb = Model.postdetailsAll.Count / 3;
+    int paginator;
+    if(nb!=0)
+    { paginator = nb + 1; }
+    else { paginator = nb; }
+}
+<div style="padding-left:590px">
+    <button class="btn btn-default">  @Html.RouteLink("1", new { action = "Index", controller = "Post" }) </button>
+  
+      @for (int i = 2; i <= paginator; i++)
+      {
+        <button class="btn btn-default">  @Html.RouteLink(i.ToString(), new { action = "Pag", controller = "Post", start = @i }) </button>
 
-
-<div id='gameModal' class='modal hide fade in' data-url='@Html.RouteLink( "hiba",new { action = "ListL", controller = "Post", PostId = 1 })'>
-    <div id='gameContainer'>
-    </div>
+    }
 </div>
-<button id='showGame'>Show Game Listing</button>
+<br />
+<br />
 
 
 <script>
-    /*
-    function createpop()
-    {
-        var x = $("#myModal2");
-        x.load("/Post/ListL")
-    }
-   $(document).ready(function () {
-        $('#showGame').click(function () {
-            var url = $('#gameModal').data('url');
+  
 
-            $.get(url, function (data) {
-                $('#gameContainer').html(data);
 
-                $('#gameModal').modal('show');
-            });
-        });
-    });
+
    
-    
-    $(document).ready(function () {
 
-        $('#submit2').submit(function (e) {
-            e.preventDefault();
-            var $form = $(this);
 
-            $.post(idd, $(this).serialize()).done(function (res) {
-                $mymodal = $("#myModal2");
-                //update the modal's body with the response received
-                $("#bodym2").html(res);
-                // Show the modal
-                $mymodal.modal("show");
-            });
+
+
+    $(function () {
+        $(".pagi").click(function () {
+            var textValue = $(this).closest("input[name='pagi']").attr('id');
+            var st = parseInt(textValue);
+            $.ajax({
+                url: '/Post/Pag',
+                type: "Post",
+                success: function (response) {
+                    window.load(response)
+                }
+
+            })
+
+
         });
     });
 
+//edit
+    /*$('label[class="ed"]').click(function (i, e) {
+        var idd = $(this).attr('num')
+        var url = "/Post/Edit?PostId=" + idd;
+
+        $("#bodym3").load(url, function () {
+            $("#myModal3").modal("show");
+
+        })
+
+
+    });
     */
-    $("#detai").click(function () {
-   
-        var url="/Post/ListL?PostId="+1;
+
+
+   //true
+        $('label[class="like"]').click(function () {
+            var idd= $(this).attr('num')
+            var url="/Post/ListL?PostId="+ idd;
 
             $("#bodym2").load(url,function(){
                 $("#myModal2").modal("show");
         
             })
-          /* $.ajax({
-                url: '/Post/ListL',
-                type: "Post",
-                data: { PostId: PostId },
-                success: function (response) {
-                    $("#bodym2").html(response);
-                    $("#myModal2").modal("show");
-                }
      
-     
-            })
-        */
    
-    });
-
-
-  /* $(document).ready(function () {
-
-        $('label[class="like"]').each(function (i, e) {
-            $(".like").click(function () {
-                var idd = $(this).attr('num');
-
-               
-
-                $("#hi").click(function () {
-                    $.ajax({
-                        url: '/ReactPost/ListL',
-                        type: "Post",
-                        data: { PostId: idd },
-                        success: function (response) {
-                            $("#bodym2").html(response);
-                        }
-
-
-                    })
-                    $("#myModal2").modal('show');
-
-                });
-            })
         });
 
-    });*/
+     
+        $('label[class="dislike"]').click(function () {
+            var idd= $(this).attr('num')
+            var url="/Post/ListD?PostId="+ idd;
+
+            $("#bodym2").load(url,function(){
+                $("#myModal2").modal("show");
+        
+            })
+     
+   
+        });
 
 //true  after
 
@@ -266,10 +268,10 @@
         });
 
     });
+    //edit
+    
 
-
-
-
+    
 
     //sep
     $(document).ready(function () {

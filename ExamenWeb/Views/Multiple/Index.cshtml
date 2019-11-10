@@ -5,154 +5,251 @@
 }
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <script src="~/Scripts/ckeditor/ckeditor.js"></script>
-<h2>Index</h2>
+<br /><br /><br /><br />
 <div class="container">
    
 
 
-    <table class="table">
-
+   
+    <div class="add">
 
         @foreach (var pos in Model.postdetails)
         {
-            <label vu="@pos.PostId" value="vu" id="vu" name="vu" class="vu" style="display:none"></label>
 
-            <tr>
-                <td>
+            <div class="pcontent" style="background-color:#adacac">
 
-
-                   @Html.Raw(pos.Contenu)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => pos.DatePost)
-                </td>
-                @if (pos.UserId == 1)
-                {
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
+                <label vu="@pos.PostId" value="vu" id="vu" name="vu" class="vu" style="display:none"></label>
 
 
-                            <input type="submit" value="supp" />
+                <label style="padding-left:10px;color:#000000"> Publié le : @Html.DisplayFor(modelItem => pos.DatePost)</label>
 
-                        </div>
-                        </div>
-                        }
-</tr>
-        }
-    </table>
+                <br />
+
+                @Html.Raw(pos.Contenu)
+
+                </div>
+
+                }
+
+            </div>
 
 
+        <div>
 
-    <div>
-
-
-        @foreach (var comment in Model.commentdetails)
+<br />
+            @foreach (var comment in Model.commentdetails)
             {
 
+                <div class="pcontent"style="width:850px" >
+                    <label>
+                        <label style="padding-left:10px;color:#000000"> Publié le : @Html.DisplayFor(modelItem => comment.DateComment)</label>
 
-
-            <label>
-              @Html.Raw(comment.Contenu)
-            </label>
-                <label>
-                    @Html.DisplayFor(modelItem => comment.DateComment)
-                </label>
-
-                if (comment.UserId == 1)
-                {
-
+                    </label>
+                    <br />
+                    <label>
+                        @Html.Raw(comment.Contenu)
+                    </label>
+                   
+                    <br />
+                    @if (comment.UserId == 1)
+                    {
                     @Html.ActionLink("Edit", "Edit", new { id = comment.CommentId })
 
-                //@Html.ActionLink("Delete", "Delete", new { id = comment.CommentId })
-
-            }
-            <a data-toggle="modal" data-id="@comment.CommentId" title="Add this item" href="#addBookDialog">delete</a>
-
-            <div class="modal hide" id="addBookDialog" data-id="@comment.CommentId">
-                <div class="modal-header">
-                    <button class="close" data-dismiss="modal">×</button>
-                    <h3 style="color:black"><b>close</b></h3>
-                </div>
-                <div class="modal-body">
-                    <h1 style="color:black"><b>Voulez vous supprimez ce post ?</b></h1>
-                    <input type="submit" name="bookId" id="bookId" class="bookId" value="@comment.CommentId" />
-                </div>
-            </div>
-                <label num="@comment.CommentId" value="hi" id="hi" name="hi" class="like">ouii</label>
-
-                 <input id="@comment.CommentId" name="butli" type="submit" value="Like" class="like" />
+                    <label num="@comment.CommentId " value="vus" id="vus" name="vus" class="vus">Delete</label>
 
 
-               <label id="hid" num="@comment.CommentId" value="hid" name="hid" class="dislike"> dislike </label>
-                        <input id="@comment.CommentId" name="butlid" type="submit" value="dislike" class="dislike" />
+
+                    }
+                    </div>
+
+                    <div style="padding-left:120px">
+
+                        <label num="@comment.CommentId" value="hi" id="hi" name="hi" class="like">ouii</label>
+
+                        <input id="@comment.CommentId" name="butli" type="submit" value="Like" class="like btn-success" />
+
+
+                        <label id="hid" num="@comment.CommentId" value="hid" name="hid" class="dislike"> dislike </label>
+                        <input id="@comment.CommentId" name="butlid" type="submit" value="dislike" class="dislike btn-danger" />
 
                         @Html.HiddenFor(model => model.CommentId)
                         @Html.HiddenFor(model => model.UserId)
-            <br />
+                        <br />
+                        <br />
+                    </div>
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                </div>
+                                <div class="modal-body" id="bodym">
+                                    voulez vous supprimez ce commentaire ?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" id="del">Supprimer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="myModal2">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close"
+                                            data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title">Modal title</h4>
+                                </div>
+                                <div class="modal-body" id="bodym2">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+
+                <div class="modal fade" id="myModal2">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close"
+                                        data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title">Modal title</h4>
+                            </div>
+                            <div class="modal-body" id="bodym2">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+            }
+
+                    </div>
 
 
+
+        @using (Html.BeginForm("Create", "Multiple", FormMethod.Post, new { PostId = Model.PostId }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
            
-        }
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <div class="container" id="con">
+                        @Html.TextAreaFor(model => model.Contenu, new { @class = "ckeditor" })
+                        @Html.ValidationMessageFor(model => model.Contenu, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
+
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="container" style="width:150px">
+
+
+                        <input type="submit" value="ajouter" class="btn btn-success" style="width:150px" />
+
+                    </div>
+                    <div class="form-group" style="visibility: hidden">
+                        <div class="col-md-10">
+                            @Html.TextBox("DateComment", DateTime.Now, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                    <div class="form-group" style="visibility: hidden">
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.PostId, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PostId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        }
 
     </div>
 
 
 
-                        @using (Html.BeginForm("Create", "Multiple", FormMethod.Post, new { PostId = Model.PostId }))
-                        {
-                            @Html.AntiForgeryToken()
-
-                            <div class="form-horizontal">
-                                <h4>Comment</h4>
-                                <hr />
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Contenu, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        @Html.TextAreaFor(model => model.Contenu, new { @class = "ckeditor"  })
-                                        @Html.ValidationMessageFor(model => model.Contenu, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-
-
-
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.UserId, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-md-offset-2 col-md-10">
-
-
-                                        <input type="submit" value="ajou" />
-
-                                    </div>
-                                    <div class="form-group" style="visibility: hidden">
-                                        <div class="col-md-10">
-                                            @Html.TextBox("DateComment", DateTime.Now, new { htmlAttributes = new { @class = "form-control" } })
-                                        </div>
-                                    </div>
-                                    <div class="form-group" style="visibility: hidden">
-                                        <div class="col-md-10">
-                                            @Html.EditorFor(model => model.PostId, new { htmlAttributes = new { @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.PostId, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        }
-
-</div>
 
 
 <script>
+
+
+    $('label[class="like"]').click(function () {
+        var idd = $(this).attr('num')
+        var url = "/Comment/ListL?CommentId=" + idd;
+
+        $("#bodym2").load(url, function () {
+            $("#myModal2").modal("show");
+
+        })
+
+
+    });
+
+
+    $('label[class="dislike"]').click(function () {
+        var idd = $(this).attr('num')
+        var url = "/Comment/ListD?CommentId=" + idd;
+
+        $("#bodym2").load(url, function () {
+            $("#myModal2").modal("show");
+
+        })
+
+
+    });
+
+
+    //delete
+    $(document).ready(function () {
+
+        $('label[class="vus"]').each(function (i, e) {
+            $(".vus").click(function () {
+                var idd = $(this).attr('num');
+
+                $("#myModal").modal('show');
+
+                $("#del").click(function () {
+                    $.ajax({
+                        url: '/Comment/DeleteC',
+                        type: "Post",
+                        data: { CommentId: idd },
+                        success: function (response) {
+                            location.reload(true)
+                        }
+
+
+                    })
+
+
+                });
+            })
+        });
+
+    });
+
 
     $(document).on("click", ".open-AddBookDialog", function () {
         var myBookId = $(this).data('id');

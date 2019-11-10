@@ -1,122 +1,52 @@
 ﻿
-<fieldset>
-    <legend>Chart</legend>
-    <div class="row">
-        <form class="form-horizontal mb-sm line-height-3">
-            <div class="col-sm-3 col-md-3">
-                <div class="form-group">
-                    <label for="submitStartTime" class="col-sm-3 control-label">Start Time</label>
-                    <div class="col-sm-6">
-                        <label id="submitStartTime"></label>
-                    </div>
-                </div>
-                <div id="latencyChart" class="col-sm-9 col-md-9" style="height: 400px;"></div>
-        </form>
-    </div>
-</fieldset>
+  <script src="~/Scripts/jquery-1.10.2.js"></script>
 
-<script type="text/javascript">
-    drawChart: function graph(graphType){
-        var that = this;
 
-        that.generateChartData();
+<div id="chart_div" style="width:500px;height:400px">
+    <%-- Here Chart Will Load --%>
+</div>
 
-        this.chart.dataProvider = this.chartData;
-        this.chart.categoryField = "date";
-        this.chart.balloon.bulletSize = 5;
 
-        // listen for "dataUpdated" event (fired when chart is rendered) and call zoomChart method when it happens
-        this.chart.addListener("dataUpdated", that.zoomChart());
 
-        // AXES
-        // category
-        var categoryAxis = this.chart.categoryAxis;
-        categoryAxis.parseDates = true; // as our data is date-based, we set parseDates to true
-        categoryAxis.minPeriod = "DD"; // our data is daily, so we set minPeriod to DD
-        categoryAxis.dashLength = 1;
-        categoryAxis.minorGridEnabled = true;
-        categoryAxis.twoLineMode = true;
-        categoryAxis.dateFormats = [{
-            period: 'fff',
-            format: 'JJ:NN:SS'
-        }, {
-            period: 'ss',
-            format: 'JJ:NN:SS'
-        }, {
-            period: 'mm',
-            format: 'JJ:NN'
-        }, {
-            period: 'hh',
-            format: 'JJ:NN'
-        }, {
-            period: 'DD',
-            format: 'DD'
-        }, {
-            period: 'WW',
-            format: 'DD'
-        }, {
-            period: 'MM',
-            format: 'MMM'
-        }, {
-            period: 'YYYY',
-            format: 'YYYY'
-        }];
+<script>
+                var chartData; // globar variable for hold chart data
+                google.load("visualization", "1", { packages: ["corechart"] });
 
-        categoryAxis.axisColor = "#DADADA";
+                // Here We will fill chartData
 
-        // value
-        var valueAxis = new AmCharts.ValueAxis();
-        valueAxis.axisAlpha = 0;
-        valueAxis.dashLength = 1;
-        this.chart.addValueAxis(valueAxis);
+                $(document).ready(function () {
 
-        // GRAPH
-        var graph = new AmCharts.AmGraph();
-        graph.title = "red line";
-        graph.valueField = "visits";
-        graph.bullet = "round";
-        graph.bulletBorderColor = "#FFFFFF";
-        graph.bulletBorderThickness = 2;
-        graph.bulletBorderAlpha = 1;
-        graph.lineThickness = 2;
-        graph.lineColor = "#5fb503";
-        graph.negativeLineColor = "#efcc26";
-        graph.hideBulletsCount = 50; // this makes the chart to hide bullets when there are more than 50 series in selection
-        this.chart.addGraph(graph);
+                    $.ajax({
+                        url: "GoogleChart.aspx/GetChartData",
+                        data: "",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; chartset=utf-8",
+                        success: function (data) {
+                            chartData = data.d;
+                        },
+                        error: function () {
+                            alert("Error loading data! Please try again.");
+                        }
+                    }).done(function () {
+                        // after complete loading data
+                        google.setOnLoadCallback(drawChart);
+                        drawChart();
+                    });
+                });
 
-        // SCROLLBAR
-        var chartScrollbar = new AmCharts.ChartScrollbar();
-        this.chart.addChartScrollbar(chartScrollbar);
 
-        this.chart.creditsPosition = "bottom-right";
+                function drawChart() {
+                    var data = google.visualization.arrayToDataTable(chartData);
 
-        // WRITE
-        this.chart.write("latencyChart");
-        this.chart.write("chartdiv");
-    }
+                    var options = {
+                        title: "Company Revenue",
+                        pointSize: 5
+                    };
 
-    // this method is called when chart is first inited as we listen for "dataUpdated" event
-    zoomChart: function zoom(e) {
-        // different zoom methods can be used - zoomToIndexes, zoomToDates, zoomToCategoryValues
-        e.chart.zoomToIndexes(e.chart.dataProvider.length - 40, e.chart.dataProvider.length - 1);
-    }
+                    var barChart = new google.visualization.BarChart(document.getElementById('chart_div'));
+                    barChart.draw(data, options);
 
-    generateChartData: function gen(){
-        var firstDate = new Date();
-        firstDate.setDate(firstDate.getDate() - 10);
-        for (var i = 0; i < 10; i++) {
-            // we create date objects here. In your data, you can have date strings
-            // and then set format of your dates using chart.dataDateFormat property,
-            // however when possible, use date objects, as this will speed up chart rendering.
-            var newDate = new Date(firstDate);
-            newDate.setDate(newDate.getDate() + i);
+                }
 
-            var visits = Math.round(Math.random() * 40) - 20;
-
-            this.chartData.push({
-                date: newDate,
-                visits: visits
-            });
-        }
-    }
 </script>
