@@ -45,11 +45,21 @@ namespace Web.Controllers
             }
             return View();
         }
-    }
-    }
-        /*    public ActionResult StatFilm()
-            {
 
-                return View("Statestique/StatFilm");
-            }
-            */     
+    public ActionResult candidatV()
+    {
+
+        return View("CandidatV");
+    }
+    public ActionResult Log()
+        {
+            return View("Log");
+        }
+    public ActionResult Sign()
+        {
+            return View("Sign");
+        }
+    }
+
+
+}

@@ -1,4 +1,4 @@
-﻿@{ViewBag.Title = "home page";}
+﻿@{ViewBag.Title = "CandidatPage";}
 <!-- start banner Area -->
 <section class="banner-area relative" id="home">
     <div class="overlay overlay-bg"></div>
@@ -6,7 +6,7 @@
         <div class="row fullscreen d-flex align-items-center justify-content-center">
             <div class="banner-content col-lg-12">
                 <h1 class="text-white">
-                    <span>1500+</span> Jobs posted last week
+                    <span>1500+</span> CITRON
                 </h1>
                 <form action="search.html" class="serach-form-area">
                     <div class="row justify-content-center form-wrap">
@@ -14,7 +14,7 @@
                             <input type="text" class="form-control" name="search" placeholder="what are you looging for?">
                         </div>
                         <div class="col-lg-3 form-cols">
-                            <div class="default-select" id="default-selects" >
+                            <div class="default-select" id="default-selects" ">
                                 <select>
                                     <option value="1">Select area</option>
                                     <option value="2">Dhaka</option>
@@ -690,3 +690,5 @@
     </div>
 </section>
 <!-- End download Area -->
+@Html.Partial("Partials/_login")
+@Html.Partial("Partials/_Register")

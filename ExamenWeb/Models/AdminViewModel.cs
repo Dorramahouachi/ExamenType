@@ -10,7 +10,7 @@ namespace ExamenWeb.Models
     public class AdminViewModel
     {
 
-        [Key]
+      
         public List<User> Users { get; set; }
 
 
